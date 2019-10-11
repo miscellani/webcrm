@@ -1,0 +1,431 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+	<!--
+	  <servlet>
+      <servlet-name>springmvc</servlet-name>
+      <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+      <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/SpringMVC/springmvc-servlet.xml</param-value>
+        </init-param>
+       </servlet>
+       <servlet-mapping>
+         <servlet-name>springmvc</servlet-name>
+         <url-pattern>/</url-pattern>
+       </servlet-mapping>
+	
+
+	
+	<context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>classpath:/SpringMVC/applicationContext.xml</param-value>
+    </context-param>
+    <servlet>
+        <servlet-name>SpringMVC</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:/SpringMVC/applicationContext.xml</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SpringMVC</servlet-name>
+        <url-pattern>*.do</url-pattern>
+    </servlet-mapping>
+
+	 -->
+	
+	
+	
+	
+	
+	
+	
+	
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+  <servlet>
+    <servlet-name>CaseReleaseServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseReleaseServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ComReleaseServlet</servlet-name>
+    <servlet-class>test.web.servlet.com.ComReleaseServlet</servlet-class>
+  </servlet>
+
+
+	
+  <servlet>
+    <servlet-name>CaseAjaxServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseAjaxServlet</servlet-class>
+  </servlet>	
+  <servlet>
+    <servlet-name>OperatorAddServlet</servlet-name>
+    <servlet-class>test.sec.servlet.OperatorAddServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OperatorDeleteServlet</servlet-name>
+    <servlet-class>test.sec.servlet.OperatorDeleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OperatorManageServlet</servlet-name>
+    <servlet-class>test.sec.servlet.OperatorManageServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OperatorUpdateServlet</servlet-name>
+    <servlet-class>test.sec.servlet.OperatorUpdateServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>LoginCheckServlet</servlet-name>
+    <servlet-class>test.sec.servlet.LoginCheckServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CaseQueryServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseQueryServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>CaseManageServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseManageServlet</servlet-class>
+  </servlet>
+  
+
+
+
+
+  <servlet>
+    <servlet-name>WorkExecuteServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkExecuteServlet</servlet-class>
+  </servlet>  
+
+ <servlet>
+    <servlet-name>WorkOperateServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkOperateServlet</servlet-class>
+  </servlet> 
+   
+  <servlet>
+    <servlet-name>CaseDivideServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseDivideServlet</servlet-class>
+  </servlet>   
+  <servlet>
+    <servlet-name>WorkObserveOneServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkObserveOneServlet</servlet-class>
+  </servlet>
+    <servlet>
+    <servlet-name>WorkObserveTwoServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkObserveTwoServlet</servlet-class>
+  </servlet>
+  <servlet>
+     <servlet-name>WorkObserveThreeServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkObserveThreeServlet</servlet-class>
+  </servlet>  
+  <servlet>
+     <servlet-name>WorkLogServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkLogServlet</servlet-class>
+  </servlet>     
+    
+  <servlet>
+    <servlet-name>CaseAddServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseAddServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>ComAddServlet</servlet-name>
+    <servlet-class>test.web.servlet.com.ComAddServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ComQueryDetailServlet</servlet-name>
+    <servlet-class>test.web.servlet.com.ComQueryDetailServlet</servlet-class>
+  </servlet>
+
+
+  <servlet>
+    <servlet-name>ComQueryServlet</servlet-name>
+    <servlet-class>test.web.servlet.com.ComQueryServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ComUpdateServlet</servlet-name>
+    <servlet-class>test.web.servlet.com.ComUpdateServlet</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>ComDeleteServlet</servlet-name>
+    <servlet-class>test.web.servlet.com.ComDeleteServlet</servlet-class>
+  </servlet>
+
+
+
+
+  <servlet>
+    <servlet-name>WorkViewServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkViewServlet</servlet-class>
+  </servlet>
+
+
+  <servlet>
+    <servlet-name>ConfigQueryServlet</servlet-name>
+    <servlet-class>test.config.servlet.ConfigQueryServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>AccessConfigQueryServlet</servlet-name>
+    <servlet-class>test.config.servlet.AccessConfigQueryServlet</servlet-class>
+  </servlet>
+ 
+   <servlet>
+    <servlet-name>AccessQueryServlet</servlet-name>
+    <servlet-class>test.config.servlet.AccessQueryServlet</servlet-class>
+  </servlet>
+   
+   <servlet>
+    <servlet-name>ConfigUpdateServlet</servlet-name>
+    <servlet-class>test.config.servlet.ConfigUpdateServlet</servlet-class>
+  </servlet>   
+  
+   <servlet>
+    <servlet-name>CaseCopyServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseCopyServlet</servlet-class>
+  </servlet> 
+  
+  
+  
+  
+  <servlet>
+    <servlet-name>CaseDeleteServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseDeleteServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>CaseUpdateServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseUpdateServlet</servlet-class>
+  </servlet>
+  
+  
+  
+  <servlet>
+    <servlet-name>WorkQueryServlet</servlet-name>
+    <servlet-class>test.web.servlet.work.WorkQueryServlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>CaseQueryDetailServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.CaseQueryDetailServlet</servlet-class>
+  </servlet>
+  
+ 
+  <servlet>
+    <servlet-name>OperatorQueryDetailServlet</servlet-name>
+    <servlet-class>test.sec.servlet.OperatorQueryDetailServlet</servlet-class>
+  </servlet>
+ 
+
+
+  <servlet-mapping>
+    <servlet-name>CaseReleaseServlet</servlet-name>
+    <url-pattern>/servlet/CaseReleaseServlet</url-pattern>
+    </servlet-mapping>  
+
+  <servlet-mapping>
+    <servlet-name>ComReleaseServlet</servlet-name>
+    <url-pattern>/servlet/ComReleaseServlet</url-pattern>
+    </servlet-mapping> 
+
+
+
+  <servlet-mapping>
+    <servlet-name>CaseAjaxServlet</servlet-name>
+    <url-pattern>/servlet/CaseAjaxServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OperatorAddServlet</servlet-name>
+    <url-pattern>/servlet/OperatorAddServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OperatorDeleteServlet</servlet-name>
+    <url-pattern>/servlet/OperatorDeleteServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OperatorManageServlet</servlet-name>
+    <url-pattern>/servlet/OperatorManageServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OperatorUpdateServlet</servlet-name>
+    <url-pattern>/servlet/OperatorUpdateServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>LoginCheckServlet</servlet-name>
+    <url-pattern>/servlet/LoginCheckServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>CaseQueryServlet</servlet-name>
+    <url-pattern>/servlet/CaseQueryServlet</url-pattern>
+  </servlet-mapping>
+ 
+   <servlet-mapping>
+    <servlet-name>CaseManageServlet</servlet-name>
+    <url-pattern>/servlet/CaseManageServlet</url-pattern>
+  </servlet-mapping>
+  
+
+
+
+
+    <servlet-mapping>
+    <servlet-name>WorkExecuteServlet</servlet-name>
+    <url-pattern>/servlet/WorkExecuteServlet</url-pattern>
+  </servlet-mapping>  
+ 
+     <servlet-mapping>
+    <servlet-name>WorkOperateServlet</servlet-name>
+    <url-pattern>/servlet/WorkOperateServlet</url-pattern>
+  </servlet-mapping>  
+   
+  <servlet-mapping>
+    <servlet-name>CaseAddServlet</servlet-name>
+    <url-pattern>/servlet/CaseAddServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>ComAddServlet</servlet-name>
+    <url-pattern>/servlet/ComAddServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>ComQueryDetailServlet</servlet-name>
+    <url-pattern>/servlet/ComQueryDetailServlet</url-pattern>
+  </servlet-mapping>
+
+
+   <servlet-mapping>
+    <servlet-name>ComQueryServlet</servlet-name>
+    <url-pattern>/servlet/ComQueryServlet</url-pattern>
+  </servlet-mapping>
+
+
+
+   <servlet-mapping>
+    <servlet-name>ComUpdateServlet</servlet-name>
+    <url-pattern>/servlet/ComUpdateServlet</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet-mapping>
+    <servlet-name>ComDeleteServlet</servlet-name>
+    <url-pattern>/servlet/ComDeleteServlet</url-pattern>
+  </servlet-mapping>
+
+
+  
+  <servlet-mapping>
+    <servlet-name>CaseCopyServlet</servlet-name>
+    <url-pattern>/servlet/CaseCopyServlet</url-pattern>
+  </servlet-mapping>  
+  
+  <servlet-mapping>
+    <servlet-name>WorkViewServlet</servlet-name>
+    <url-pattern>/servlet/WorkViewServlet</url-pattern>
+  </servlet-mapping>  
+  
+  
+  <servlet-mapping>
+    <servlet-name>CaseDeleteServlet</servlet-name>
+    <url-pattern>/servlet/CaseDeleteServlet</url-pattern>
+  </servlet-mapping>
+
+
+  <servlet-mapping>
+    <servlet-name>CaseUpdateServlet</servlet-name>
+    <url-pattern>/servlet/CaseUpdateServlet</url-pattern>
+  </servlet-mapping>
+ 
+  <servlet-mapping>
+    <servlet-name>WorkQueryServlet</servlet-name>
+    <url-pattern>/servlet/WorkQueryServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet-mapping>
+    <servlet-name>CaseQueryDetailServlet</servlet-name>
+    <url-pattern>/servlet/CaseQueryDetailServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>CaseDivideServlet</servlet-name>
+    <url-pattern>/servlet/CaseDivideServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>WorkObserveOneServlet</servlet-name>
+    <url-pattern>/servlet/WorkObserveOneServlet</url-pattern>
+  </servlet-mapping>  
+  <servlet-mapping>
+    <servlet-name>WorkObserveTwoServlet</servlet-name>
+    <url-pattern>/servlet/WorkObserveTwoServlet</url-pattern>
+  </servlet-mapping>
+   <servlet-mapping>
+    <servlet-name>WorkObserveThreeServlet</servlet-name>
+    <url-pattern>/servlet/WorkObserveThreeServlet</url-pattern>
+  </servlet-mapping> 
+   <servlet-mapping>
+    <servlet-name>WorkLogServlet</servlet-name>
+    <url-pattern>/servlet/WorkLogServlet</url-pattern>
+  </servlet-mapping>   
+    
+  
+
+
+     <servlet-mapping>
+    <servlet-name>ConfigUpdateServlet</servlet-name>
+    <url-pattern>/servlet/ConfigUpdateServlet</url-pattern>
+  </servlet-mapping> 
+  
+   <servlet-mapping>
+    <servlet-name>ConfigQueryServlet</servlet-name>
+    <url-pattern>/servlet/ConfigQueryServlet</url-pattern>
+  </servlet-mapping> 
+ 
+    <servlet-mapping>
+    <servlet-name>AccessConfigQueryServlet</servlet-name>
+    <url-pattern>/servlet/AccessConfigQueryServlet</url-pattern>
+  </servlet-mapping> 
+  
+     <servlet-mapping>
+    <servlet-name>AccessQueryServlet</servlet-name>
+    <url-pattern>/servlet/AccessQueryServlet</url-pattern>
+  </servlet-mapping>  
+  
+  
+  
+   
+  <servlet-mapping>
+    <servlet-name>OperatorQueryDetailServlet</servlet-name>
+    <url-pattern>/servlet/OperatorQueryDetailServlet</url-pattern>
+  </servlet-mapping>
+  
+  
+
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+</web-app>

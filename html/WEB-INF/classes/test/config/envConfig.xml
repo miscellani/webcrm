@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<config>	
+   
+  <!--广西现场联调环境--> 
+  <Version name="gxlt">   
+    <pWebUrl>http://wtlt.cmcc.gx:60056/</pWebUrl> 
+    <pointLogin>1</pointLogin>
+    <soaUrl>http://10.3.3.188:50001/CRMService</soaUrl>   
+    <!-- 连的广办广西数据库 -->
+    <dbUrl>jdbc:oracle:thin:@10.3.3.194:1521:gxngcrm</dbUrl>
+    <dbUser>base:base#123|so1:so1#123|res:res#123|sec:sec#123|party:party#123|product:product#123|ams1:ams1#123|sf:sf#123</dbUser>
+    <region>771</region>
+    <orgId>71001001</orgId>
+    <opId>95550088</opId>
+    <opPass>password1</opPass>
+  </Version>
+
+   <!--广办广西测试环境--> 
+  <Version name="gbgx">   
+    <pWebUrl>http://10.3.3.186:10111/</pWebUrl> 
+    <mWebUrl>http://10.3.3.186:13111/</mWebUrl> 
+    <pointLogin>0</pointLogin>
+    <soaUrl>http://10.3.3.186:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@10.3.3.194:1521:gxngcrm</dbUrl>
+    <dbUser>aiqry:aiqry|base:base#123|so1:so1#123|res:res#123|sec:sec#123|party:party#123|product:product#123|ams1:ams1#123</dbUser>
+    <region>771</region>
+    <orgId>71001001</orgId>
+    <opId>96660067</opId>
+    <opPass>password1</opPass>
+  </Version>
+  
+
+
+
+
+  <!--西藏现场测试环境--> 
+  <Version name="xzxc">   
+    <pWebUrl>http://10.3.3.182:10111/</pWebUrl> 
+    <mWebUrl>http://10.3.3.182:14111/</mWebUrl> 
+    <pointLogin>0</pointLogin>
+    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@172.16.9.28:1522:ng3cs</dbUrl>
+    <dbUser>bassi:P9km_6aV</dbUser>
+    <maxPoolSize>15</maxPoolSize>
+    <region>891</region>
+    <orgId>71011620</orgId>
+    <opId>96660010</opId>
+    <opPass>abc123</opPass>
+  </Version>
+  
+  
+  <!--广办西藏测试环境--> 
+  <Version name="gbxz">   
+    <pWebUrl>http://10.3.3.214:8211/crmweb/?service=page/Login</pWebUrl> 
+    <mWebUrl>http://10.3.3.214:8080/ngboss/</mWebUrl> 
+    <pointLogin>1</pointLogin>
+    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@10.3.3.237:1522:xzcrm</dbUrl>
+    <dbUser>bassi:gzxzcrm#1213</dbUser>
+    <maxPoolSize>15</maxPoolSize>
+    <region>891</region>
+    <orgId>10000001</orgId>
+    <opId>91110011</opId>
+    <opPass>123456</opPass>
+  </Version>
+  
+
+  <!--香港平台数据配置(UAT环境)--> 
+    <Version name="config--">    
+    <dbUrl>jdbc:oracle:thin:@172.16.9.164:1522:hkcrmuat</dbUrl>
+    <dbUser>aitest:aitest_T123</dbUser>
+    <maxPoolSize>15</maxPoolSize> 
+    <region>852</region>
+    <mail>zhanglin@asiainfo.com|zhanglin|1984916qqq@</mail>
+  </Version>
+  <!--香港UAT测试环境--> 
+   <Version name="run--"> 
+     <env>UAT环境</env>   
+    <pWebUrl>http://172.16.9.192:8080/web-ngboss</pWebUrl> 
+    <mWebUrl>http://172.16.9.192:8080/web-ngboss</mWebUrl> 
+    <pointLogin>1</pointLogin>
+    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@172.16.9.164:1522:hkcrmuat</dbUrl>
+    <dbUser>aitest:aitest_T123</dbUser>
+    <maxPoolSize>15</maxPoolSize> 
+    <region>852</region>
+    <orgId>21000100</orgId>
+    <opId>P91110001</opId>
+    <opPass>HKTest_#2019a</opPass>
+  </Version> 
+
+
+
+
+  <!--基线平台数据配置(测试环境)--> 
+  <Version name="config">    
+    <dbUrl>jdbc:oracle:thin:@172.17.30.24:1521:basecrmdev</dbUrl>
+    <dbUser>aitest:Pass!123</dbUser>
+    <maxPoolSize>15</maxPoolSize> 
+    <region>897</region>
+    <mail>zhanglin@asiainfo.com|zhanglin|19849161qaz#</mail>
+  </Version>
+
+  <!--基线现场订单中心测试环境--> 
+  <Version name="run">   
+    <env>测试环境</env> 
+    <pWebUrl>http://172.17.30.14:8080/web-order/order</pWebUrl> 
+    <mWebUrl>http://172.17.30.14:8080/web-order/order</mWebUrl> 
+    <pointLogin>0</pointLogin>
+    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@172.17.30.24:1521:basecrmdev</dbUrl>
+    <dbUser>aitest:Pass!123</dbUser>
+    <maxPoolSize>15</maxPoolSize> 
+    <region>897</region>
+    <orgId>10000001</orgId>
+    <opId>P91110010</opId>
+    <opPass>123456</opPass>
+  </Version>
+
+  
+</config>
