@@ -264,7 +264,7 @@ public class WebInit {
 							new File(workSpace + File.separator + dirName[dirName.length-1] + "_his" + File.separator));
 
 				}
-	            Log.info("处理原来工作目录---------");
+	            Log.info("处理原工作目录---------");
 
 				// 创建新的文件夹
 				datenum = dateChaUtils.nowToNum();
