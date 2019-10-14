@@ -243,7 +243,7 @@ public class WebInit {
 		DateUtil dateChaUtils = new DateUtil();
 		ConfigDbOperate dbOperate = new ConfigDbOperate();
 		 if(filterType.equals("all")||filterType.equals("filter")){
-	            Log.info("重新执行开始---------");
+	            Log.info("重新执行开始----------");
 
 			 
 
