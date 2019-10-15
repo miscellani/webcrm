@@ -117,7 +117,7 @@ public class PageCheck {
 	 * @return
 	 * @throws Exception 
 	 */
-	public HashMap<String, String> checkcontains(String webContent, String expectContent,String remark,HashMap<String, String> resultMap) throws Exception {
+	public HashMap<String, String> checkcontains(String webContent, String expectContent,String remark,HashMap<String, String> resultMap,String caseID) throws Exception {
 		
 	    String screenpath = null;
 	    OpWebDriver opWebDriver = new OpWebDriver();
@@ -132,7 +132,7 @@ public class PageCheck {
 
 		}else{
 			 //webCheck(false, remark);
-			 messageString =messageString +"错误_"+remark+"\n";
+			 messageString =messageString +"错误_caseid:"+caseID+"_"+remark+"\n";
 			 messageString=messageString+"当前值:"+webContent+"\n";
 			 messageString=messageString+"期望值:"+expectContent+"\n";
 			 resultMap.put("result", "错误");
@@ -157,7 +157,7 @@ public class PageCheck {
 	 * @return boolean
 	 * @throws Exception 
 	 */
-	public HashMap<String, String> checkequals(String webContent, String expectContent,String remark,HashMap<String, String> resultMap) throws Exception {
+	public HashMap<String, String> checkequals(String webContent, String expectContent,String remark,HashMap<String, String> resultMap,String caseID) throws Exception {
 		
 	    String screenpath = null;
 	    OpWebDriver opWebDriver = new OpWebDriver();
@@ -174,7 +174,7 @@ public class PageCheck {
 
 		}else{
 			 //webCheck(false, remark);
-			 messageString =messageString +"错误_"+remark+"\n";
+			 messageString =messageString +"错误_caseid:"+caseID+"_"+remark+"\n";
 			 messageString=messageString+"当前值:"+webContent+"\n";
 			 messageString=messageString+"期望值:"+expectContent+"\n";
 			 resultMap.put("result", "错误");
