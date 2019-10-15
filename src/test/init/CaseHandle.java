@@ -132,7 +132,7 @@ public class CaseHandle {
 		//hashMap.put("result", "成功");
 		//hashMap.put("saveData", "");
 		StringBuffer stringBuffer =  new StringBuffer();
-		stringBuffer.append(module+ "_" + businessMenu + "_"+ caseId + "操作开始\n");
+		stringBuffer.append(module+ "_" + businessMenu + "_"+ caseId + "操作开始\n"+"开始时间："+startTime);
 
 		HashMap reTurnMap = new HashMap<>();
 
@@ -277,8 +277,8 @@ public class CaseHandle {
 		Log.info("--------------执行CASE:" + module + "_" + businessMenu + "_"
 				+ caseId + "结束-------------");
 		
-
-		stringBuffer.append(module + "_" + businessMenu + "_"+ caseId + "操作结束\n");
+		String endTime= dateUtil.nows();
+		stringBuffer.append(module + "_" + businessMenu + "_"+ caseId + "操作结束\n"+"开始时间："+endTime);
 		//保存执行结果
 		//------更新CASE为真实数据到数据库 请求头，请求体，请求参数，返回参数，返回报文123 ，访问结果
 
@@ -286,7 +286,7 @@ public class CaseHandle {
 		webCaseBean.setResult((String)reTurnMap.get("result"));
 		webCaseBean.setSaveData( ((String)reTurnMap.get("saveData") ).replace(" ", ""));
 		webCaseBean.setRemark(stringBuffer.toString());
-		String endTime= dateUtil.nows();
+
 		ArrayList<Integer> fee = dateUtil.getFeeTime(startTime, endTime);
 		webCaseBean.setFee(fee.get(2)*60);
 		webCaseExecuteDao.updateExecuteCase(webCaseBean);
