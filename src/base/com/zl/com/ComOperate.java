@@ -473,7 +473,7 @@ public class ComOperate {
 				String bceTip_xpath="/html/body/div/div/div[2]/div/div[2]";
 				try{
 					String pageconent = page.gettext(By.xpath(bceTip_xpath));
-					resultMap= pageCheck.checkcontains(pageconent, containsContent, menuName+"-规则校验", resultMap);
+					resultMap= pageCheck.checkcontains(pageconent, containsContent, menuName+"-规则校验", resultMap,this.mainCaseId);
 					if(resultMap.get("result").equals("成功")){
 						resultMap.put("result", "正确");
 					}
