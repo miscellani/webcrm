@@ -189,8 +189,8 @@ public class WebInit {
                 webCaseBean.setResult(result);
                 webCaseBean.setSaveData((String)hashMap.get("saveData"));
 
-
-                webCaseBean.setRemark((String)hashMap.get("message"));
+	            String startdate= new DateUtil().now();
+                webCaseBean.setRemark("调试时间："+startdate+"\n"+(String)hashMap.get("message"));
                 
                 //why要更新到初始，垃圾
 				/*dbOperate.delData("delete web_case_current t where caseid='"+caseId+"'");
@@ -225,13 +225,11 @@ public class WebInit {
 	            
 	            
 	            
-	            
+
 				String remark = webCaseBean.getRemark();
 				webCaseBean.setRemark(hashMap.get("message")+remark+"\n");
 				webCaseBean.setResult(hashMap.get("result"));
 				webCaseExecuteDao.updateExecuteCase(webCaseBean);
-
-				System.out.println("结束了");
 	            Log.info("caseId="+caseId+":校验步骤结束");
 	            Log.info("caseId="+caseId+":调试用例结束,结果="+hashMap.get("result"));
 				return;
