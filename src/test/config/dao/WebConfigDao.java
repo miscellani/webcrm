@@ -10,6 +10,7 @@ import java.util.List;
 import test.config.bean.WebConfigBean;
 import base.com.zl.db.ConfigDbOperate;
 import base.com.zl.db.DbOperate;
+import base.com.zl.log.Log;
 import base.com.zl.utils.DataUtil;
 import base.com.zl.utils.DateUtil;
 import oracle.net.aso.n;
@@ -637,7 +638,8 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 	        		sql=sql.replace(pValue, paramValues[i]);
 	        	}
 	      	   sql= " select *  from  ( "+sql +"  ) where rownum< 100 order by dbms_random.value";
-
+	      	 System.out.println(sql);
+	      	 Log.info("numberkey最终转化为:"+sql);
 	      	   try{
 		        	resultMap =dbOperate.searchMaps(sql).get(0);
 
@@ -668,6 +670,7 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 	             System.out.println(sql);
 
 	           //s =dbOperate.searchStrings(sql).get(0);
+		      	 Log.info("numberkey最终转化为:"+sql);
 	             resultMap =dbOperate.searchMaps(sql).get(0);
 	     		for(String mapValue : resultMap.values()){
 
