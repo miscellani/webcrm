@@ -192,13 +192,13 @@ public class TranslateLogic {
 		
         if(lineContentString.contains("this.")){
 			return "			" + lineContentString+ ";\n";
-		   //增加BCE规则校验特殊处理
-		}else if(lineContentString.contains("menucheck")){
+		   //增加BCE规则校验特殊处理 ,取消
+		}/*else if(lineContentString.contains("menucheck")){
 		
 			
 			//return "			" + "resultMap = comOp."+lineContentString.split("\\)")[0]+",caseId)"
 					return "			" + "resultMap = comOp."+lineContentString+ ";\n";
-		}else if (lineContentString.contains("=\"")){
+		}*/else if (lineContentString.contains("=\"")){
 				return "			String "+ lineContentString + ";\n";
 
 
