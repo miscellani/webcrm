@@ -158,24 +158,24 @@ for(i=0;i<cs.length;i++){
 
     <tr>
     <td>
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table width="100%" border="0" cellspacing="0" cellpadding="1">
       <tr>
         
+
+        
+        <div><table id="123"  border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
+
             <tr>
             <td width="5%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">编号</span></div></td>
             <td width="10%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">组件模块</span></div></td>            
-            <td width="20%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">组件编码</span></div></td>
-            <td width="30%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">组件说明</span></div></td>     
+            <td width="15%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">组件编码</span></div></td>
+            <td width="25%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">组件说明</span></div></td>     
             <td width="5%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">私有</span></div></td>          
-            <td width="5%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">开发人</span></div></td>         
+            <td width="10%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">开发人</span></div></td>         
             <td width="5%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF"><div align="center"><span class="STYLE1">状态</span></div></td>			
-			<td width="30%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
+			<td width="15%" height="22" background="<%=basePath%>resource/images/bg2.gif" bgcolor="#FFFFFF" class="STYLE1"><div align="center">基本操作</div></td>
 			
             </tr>
-        
-        <div><table id="123" width="100%" border="0" cellpadding="0" cellspacing="1" bgcolor="b5d6e6" onmouseover="changeto()"  onmouseout="changeback()">
-
-
 		<% List<WebComponentBean> list = (List<WebComponentBean>)request.getAttribute("list");
 					if(list!=null && list.size()>0){
 							for(int i=0;i<list.size();i++){ 
@@ -184,12 +184,12 @@ for(i=0;i<cs.length;i++){
  <tr>
             <td height="22" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1"><%=webComponentBean.getComId()%> </span></div></td>
             <td height="22" bgcolor="#FFFFFF"style="width: 10%"><div align="center"><span class="STYLE1"><%=webComponentBean.getModuleCode()%> </span></div></td>
-            <td height="22" bgcolor="#FFFFFF"style="width: 20%"><div align="center"><span class="STYLE1"><%=webComponentBean.getComCode()%> </span></div></td>
-            <td height="22" bgcolor="#FFFFFF"style="width: 30%"><div align="center"><span class="STYLE1"><%=webComponentBean.getComName()%> </span></div></td>
+            <td height="22" bgcolor="#FFFFFF"style="width: 15%"><div align="center"><span class="STYLE1"><%=webComponentBean.getComCode()%> </span></div></td>
+            <td height="22" bgcolor="#FFFFFF"style="width: 25%"><div align="center"><span class="STYLE1"><%=webComponentBean.getComName()%> </span></div></td>
             <td height="22" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1"><%=webComponentBean.getIsPrivate()%> </span></div></td>   
-            <td height="22" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1"><%=webComponentBean.getTester()%> </span></div></td>                       
+            <td height="22" bgcolor="#FFFFFF"style="width: 10%"><div align="center"><span class="STYLE1"><%=webComponentBean.getTester()%> </span></div></td>                       
 			<td height="22" bgcolor="#FFFFFF"style="width: 5%"><div align="center"><span class="STYLE1"><%=webComponentBean.getResult()%></span></div></td>				
-            <td height="22" bgcolor="#FFFFFF"style="width: 30%"><div align="center"><span class="STYLE4">
+            <td height="22" bgcolor="#FFFFFF"style="width: 15%"><div align="center"><span class="STYLE4">
             <img src="<%=basePath%>resource/images/release.png"  />            
             <a   target="_blank" href="<%=basePath%>servlet/ComReleaseServlet?execute=no&comId=<%=Integer.toString(webComponentBean.getComId())%>">发布</a>&nbsp; 
             <img src="<%=basePath%>resource/images/copy.gif"  />            
