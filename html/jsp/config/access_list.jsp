@@ -90,6 +90,7 @@ String paraCode = (String)request.getAttribute("paraCode");
 String remark = (String)request.getAttribute("remark");	
 String param = (String)request.getAttribute("param");	
 String id = (String)request.getAttribute("id");	
+String sql = (String)request.getAttribute("sql");	
 
 %>	
 function query(){
@@ -154,7 +155,7 @@ function query(){
 
   <tr>
     <td >
-    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <table width="100%" border="0" cellspacing="1" cellpadding="1">
       <tr width="100%" >
         <td width="1%"></td>
         
@@ -180,15 +181,23 @@ function query(){
       
       
       <tr width="100%" >
-            <td width="1%"></td>
-  			<td class="STYLE4"   width="5%"  align="left">配置说明： </td>	                    
+            <td ></td>
+  			<td class="STYLE4"   width="5%"  align="left">配置说明： </td>	         
+  			
+  			<td ></td>
+  			<td class="STYLE4"   width="5%"  align="left">查询SQL： </td>	           
       </tr>
       <tr height="10"  ></tr>
        
       <tr width="100%" >
-            <td width="1%"></td>
-            <td   align="left">
-			<textarea  style="width: 800px" rows="8"  id="3" type="text" name="remark"><%=remark%> </textarea>		
+            <td width="5%"></td>
+            <td  width="45%" align="left">
+			<textarea  style="width: 400px" rows="8"  id="3" type="text" name="remark"><%=remark%> </textarea>		
+			</td>
+			
+			<td width="5%"></td>
+            <td  width="45%" align="left">
+			<textarea  style="width: 800px" rows="8"  id="4" type="text" name="remark"><%=sql%> </textarea>		
 			</td>
 
       </tr>
