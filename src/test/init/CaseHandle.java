@@ -852,7 +852,7 @@ public class CaseHandle {
 						
 						String[] classmethods= classmethod.split("\\.");
 						
-						String newClass = classmethods[0]+" "+classmethods[0]+" = new "+classmethods[0]+"(webDriver);";
+						String newClass = classmethods[0]+" "+classmethods[0]+" = new "+classmethods[0]+"(webDriver,caseId,null);";
 						if(!opStringBufferTemp.toString().contains(newClass)){
 							String opStringBufferTempTemp = opStringBufferTemp.toString().replace("OpWebDriver opWebDriver = new OpWebDriver();", "OpWebDriver opWebDriver = new OpWebDriver();\n"+newClass);
 							opStringBufferTemp =new StringBuffer(opStringBufferTempTemp);
@@ -865,6 +865,12 @@ public class CaseHandle {
 											
 						backLine=backLine.replace(newClass, "");
 
+                         if(backLine.contains("menucheck")){
+							
+							
+							//return "			" + "resultMap = comOp."+lineContentString.split("\\)")[0]+",caseId)"
+								backLine	= "			" + "resultMap = "+backLine+ "\n";
+						}
 					}
 					
 					
