@@ -148,7 +148,7 @@ public class CaseAjaxServlet extends HttpServlet {
 
         		
         		
-                String sql ="select  'com.'||modulecode||'.'||comcode||'('||paramname||')---说明:' ||t.comname  from web_component  t    where isprivate in ("+isPrivate+") and result='已发布' ";
+                String sql ="select  'com.'||modulecode||'.'||comcode||'('||paramvalue||')---说明:' ||t.comname  from web_component  t    where isprivate in ("+isPrivate+") and result='已发布' ";
             	try {
 
 				if(!module.equals("")){
