@@ -102,17 +102,20 @@ public class AccessQueryServlet extends HttpServlet {
 			
 			String op = request.getParameter("op");			
 			ArrayList<String> accessList = new  ArrayList<String>();
+			
+			String sql ="";
+			try {
+				sql=   configInfoDao.getAccessSql(paraCode);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			if(op!=null){
 				
 		
 	    		
-		String sql ="";
-		try {
-			sql=   configInfoDao.getAccessSql(paraCode);
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}		
+		
 		
 		
 		//替换参数 
@@ -216,6 +219,7 @@ public class AccessQueryServlet extends HttpServlet {
 	    request.setAttribute("remark", remark);
 		request.setAttribute("paraCode", paraCode);	
 		request.setAttribute("param", param);	
+		request.setAttribute("sql", sql);			
 
 		request.getRequestDispatcher("/jsp/config/access_list.jsp").forward(request, response);
 		
