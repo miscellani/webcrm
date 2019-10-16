@@ -162,7 +162,15 @@ public class ComHandle {
 					.append("			DbCheck dbCheck = new DbCheck();\n");
 			opStringBufferTemp
 					.append("			PageCheck pageCheck = new PageCheck(webDriver,caseId);\n");
-	
+			opStringBufferTemp
+			.append("			HashMap resultMap  = new HashMap<>();\n");
+
+
+
+	opStringBufferTemp
+	.append("			resultMap.put(\"message\", \"\");\n");
+	opStringBufferTemp
+	.append("			resultMap.put(\"result\", \"成功\");\n");
 
 
 
@@ -213,7 +221,7 @@ public class ComHandle {
 						
 						String[] classmethods= classmethod.split("\\.");
 						
-						String newClass = classmethods[0]+" "+classmethods[0]+" = new "+classmethods[0]+"(webDriver);";
+						String newClass = classmethods[0]+" "+classmethods[0]+" = new "+classmethods[0]+"(webDriver,caseId,null);";
 						if(!opStringBufferTemp.toString().contains(newClass)){
 							String opStringBufferTempTemp = opStringBufferTemp.toString().replace("OpWebDriver opWebDriver = new OpWebDriver();", "OpWebDriver opWebDriver = new OpWebDriver();\n"+newClass);
 							opStringBufferTemp =new StringBuffer(opStringBufferTempTemp);
