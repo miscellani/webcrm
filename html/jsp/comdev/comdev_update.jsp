@@ -239,7 +239,7 @@ switchframetomenu()&#59
 click(choiceType_x)&#59
 switchframe(&#34 1 &#34,&#34 0 &#34)&#59"
 						
-						valid="required"  errmsg="操作步骤不能为空!"  rows="40" id="223" name="opStep" onkeyup="getMoreContens(223,'opStep',556)" onfocus="getMoreContens(223,'opStep',556)" onblur="clearContent(556)"
+						valid="required"  errmsg="操作步骤不能为空!"  rows="40" id="223" name="opStep" onkeyup="getMoreContens(223,'opStep',556)" onfocus="getMoreContens(223,'opStep',556)" 
 							style="font-size:15px;width: 100%; resize: none;"><%if(comInfo.getOpStep()==null){%><%}else{%><%=comInfo.getOpStep()%><%}%></textarea>
 					</td>
 				</tr>	
@@ -365,7 +365,39 @@ switchframe(&#34 1 &#34,&#34 0 &#34)&#59"
              }
              td.onclick=function()
              {
-                 document.getElementById(id).value=this.innerText;
+                 //document.getElementById(id).value=this.innerText;
+                 
+                 
+                 
+                 
+                 // document.getElementById(id).value=document.getElementById(id).value+this.innerText;
+                 var bb=this.innerText;
+                 var origintext=document.getElementById(id).value;
+               //  alert("提示:"+bb);
+               //  alert("原文:"+origintext);
+                 var temptext="";
+                 temptextlist=origintext.match(/([\d\D]*);{1,}/);
+                 //匹配删除输入不完整的部分
+                 if(temptextlist== undefined || temptextlist.length == 0){
+                 	//alert("未匹配");  	
+                 }else{
+                 	//alert("有匹配:"+temptextlist); 
+                 
+                 	temptext=temptextlist[temptextlist.length-1]+";\n";
+                 }
+               
+                //alert("截取原文:"+temptext);            
+                var newstring=bb.match(/(.*)>{3}/)[1]+";";
+                
+               // alert("匹配提示结果:"+newstring);
+                 document.getElementById(id).value=temptext + newstring;
+                 
+                 
+                 
+                 
+                 
+                 
+                 
              }
              var text=document.createTextNode(nextNode);
              td.appendChild(text);
