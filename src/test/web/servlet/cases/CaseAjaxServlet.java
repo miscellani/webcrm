@@ -33,6 +33,7 @@ public class CaseAjaxServlet extends HttpServlet {
     	keyWordList.clear();
     	req.setCharacterEncoding("utf-8");
         String keyWord = req.getParameter("keywords");
+        System.out.println("-"+keyWord+"-");
         String paratype = req.getParameter("paratype");
         String menuCode = req.getParameter("menuCode");
         //新增CASE类型或组件类型 case com
@@ -104,7 +105,7 @@ public class CaseAjaxServlet extends HttpServlet {
         List<String> list;
         	if(keyWord.equals(".")){
             	try {
-					keyWordList = dbOperate.searchStrings("select  paracode   ||'('||para2||')---说明:'||remark||'---出参:'||para3  from web_Config where state='1' and  paratype in ('"+paratype+"')");
+					keyWordList = dbOperate.searchStrings("select   case when para3 = '无' or para3= '' or para3 is null then '' else  'DefaultVar='  end       ||              paracode||'('||     case when para2 = '无' or para2 = '' then '' else para2 end         ||')>>>说明:'||remark||'---出参:'||para3          from web_Config where state='1' and  paratype in ('"+paratype+"')");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -116,7 +117,7 @@ public class CaseAjaxServlet extends HttpServlet {
         		
         		keyWord = keyWord.substring(5);
             	try {
-					keyWordList = dbOperate.searchStrings("select 'this.'||casecode||'('||paramname||')---说明:'||t.casename||'--页面操作公共方法' from web_case t where t.menucode='"+menuCode+"' and paramname is not null union "
+					keyWordList = dbOperate.searchStrings("select 'this.'||casecode||'('||paramname||')>>>说明:'||t.casename||'--页面操作公共方法' from web_case t where t.menucode='"+menuCode+"' and paramname is not null union "
 							+"select 'this.'||casecode||'Check()---说明:'||t.casename||'--校验操作公共方法' from web_case t where t.menucode='"+menuCode+"' and paramname is not null");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
@@ -148,7 +149,7 @@ public class CaseAjaxServlet extends HttpServlet {
 
         		
         		
-                String sql ="select  'com.'||modulecode||'.'||comcode||'('||paramvalue||')---说明:' ||t.comname  from web_component  t    where isprivate in ("+isPrivate+") and result='已发布' ";
+                String sql =" case when outparam = '无' or outparam= ''  or outparam is null then '' else  'DefaultVar='  end || 'com.'||modulecode||'.'||comcode||'('||case when paramvalue = '无' or paramvalue = '' then '' else paramvalue end                               ||')>>>说明:' ||t.comname  from web_component  t    where isprivate in ("+isPrivate+") and result='已发布' ";
             	try {
 
 				if(!module.equals("")){
@@ -173,7 +174,7 @@ public class CaseAjaxServlet extends HttpServlet {
         		
         	}else{
             	try {
-					keyWordList = dbOperate.searchStrings("select  paracode   ||'('||para2||')---说明:'||remark||'---出参:'||para3  from web_Config where state='1' and paracode like'"+keyWord+"%' and  paratype in ('"+paratype+"')");
+					keyWordList = dbOperate.searchStrings("select   case when para3 = '无' or para3= '' or para3 is null then '' else  'DefaultVar='  end       ||              paracode||'('||     case when para2 = '无' or para2 = '' then '' else para2 end ||')>>>说明:'||remark||'---出参:'||para3  from web_Config where state='1' and paracode like'"+keyWord+"%' and  paratype in ('"+paratype+"')");
 				} catch (SQLException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
