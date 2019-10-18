@@ -63,7 +63,7 @@ function getLog() {
 
 
     // 指定websocket路径,此地址建议根据用js动态获取10.168.0.229
-    var websocket = new WebSocket('ws://10.168.0.229:8080/webcrm/log');
+    var websocket = new WebSocket('ws://10.168.3.81:8080/webcrm/log');
     websocket.onmessage = function(event) {
 
       // 接收服务端的实时日志并添加到HTML页面中（error显示红色）
