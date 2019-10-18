@@ -258,11 +258,11 @@ ab=searchmap(&#34select t.bill_id,t.user_id from so1.ins_user_791 t where bill_i
 switchframetomenu()&#59
 click(choiceType_x)&#59
 switchframe(&#34 1 &#34,&#34 0 &#34)&#59"
-						
-						valid="required"  errmsg="操作步骤不能为空!"  rows="40" id="223" name="opStep" onkeyup="getMoreContens(223,'opStep',556)" onfocus="getMoreContens(223,'opStep',556)" onblur="clearContent(556)"
+						valid="required"  errmsg="操作步骤不能为空!"  rows="40" id="223" name="opStep" onkeyup="getMoreContens(223,'opStep',556)" onfocus="getMoreContens(223,'opStep',556)"  
 							style="font-size:15px;width: 100%; resize: none;"><%if(caseinfo.getOpStep()==null){%><%}else{%><%=caseinfo.getOpStep()%><%}%></textarea>
 					</td>
 				</tr>	
+				<!--valid="required"  errmsg="操作步骤不能为空!"  rows="40" id="223" name="opStep" onkeyup="getMoreContens(223,'opStep',556)" onfocus="getMoreContens(223,'opStep',556)" onblur="clearContent(556)"-->
 				
 				
 					<tr>
@@ -285,8 +285,8 @@ switchframe(&#34 1 &#34,&#34 0 &#34)&#59"
 orderfinish(&#34 1 &#34,orderId)&#59
 sql(&#34 1&#34 ,&#34select * from ins.um_subscirber_region where t.access_num=&#39 18665717801 &#39&#34,&#34校验用户数&#34)&#59
 orderfinish(&#34 186657178701 &#34,&#34 54984646 &#34)&#59"						
-						rows="8" id="323" name="checkStep" onkeyup="getMoreContens(323,'checkStep',656)" onfocus="getMoreContens(323,'checkStep',656)" onblur="clearContent(656)"
-							style="font-size:20px;width: 100%; resize: none;"><%if(caseinfo.getCheckStep()==null){%><%}else{%><%=caseinfo.getCheckStep()%><%}%></textarea>
+						rows="8" id="323" name="checkStep" onkeyup="getMoreContens(323,'checkStep',656)" onfocus="getMoreContens(323,'checkStep',656)" "
+							style="font-size:20px;width: 100%; resize: none;"><%if(caseinfo.getCheckStep()==null){%><%}else{%><%=caseinfo.getCheckStep()%><%}%></textarea> <!-- onblur="clearContent(656) -->
 	
 					</td>
 				</tr>				
@@ -349,7 +349,7 @@ orderfinish(&#34 186657178701 &#34,&#34 54984646 &#34)&#59"
         // var paratype = "paramsql";
          
          if (content == "") {
-             clearContent();
+            clearContent();
              return;
          }
          xmlHttp = createXmlHttp();
@@ -400,12 +400,12 @@ orderfinish(&#34 186657178701 &#34,&#34 54984646 &#34)&#59"
  
      function clearContent(tid)
      {
-         var contentTableBody = document.getElementById(tid);
+          var contentTableBody = document.getElementById(tid);
          var size = contentTableBody.childNodes.length;
          for(var i=size-1;i>0;i--)
              {
              contentTableBody.removeChild(contentTableBody.childNodes[i]);
-             }
+             } 
      }
      function intelliSense(json,id,tid)
      {
@@ -429,7 +429,33 @@ orderfinish(&#34 186657178701 &#34,&#34 54984646 &#34)&#59"
              }
              td.onclick=function()
              {
-                 document.getElementById(id).value=this.innerText;
+                // document.getElementById(id).value=document.getElementById(id).value+this.innerText;
+                var bb=this.innerText;
+                var origintext=document.getElementById(id).value;
+              //  alert("提示:"+bb);
+              //  alert("原文:"+origintext);
+                var temptext="";
+                temptextlist=origintext.match(/([\d\D]*);{1,}/);
+                //匹配删除输入不完整的部分
+                if(temptextlist== undefined || temptextlist.length == 0){
+                	//alert("未匹配");  	
+                }else{
+                	//alert("有匹配:"+temptextlist); 
+                
+                	temptext=temptextlist[temptextlist.length-1]+";\n";
+                }
+              
+               //alert("截取原文:"+temptext);            
+               var newstring=bb.match(/(.*)>{3}/)[1]+";";
+               
+              // alert("匹配提示结果:"+newstring);
+                document.getElementById(id).value=temptext + newstring;
+             
+             
+             
+             
+             
+             
              }
              var text=document.createTextNode(nextNode);
              td.appendChild(text);
