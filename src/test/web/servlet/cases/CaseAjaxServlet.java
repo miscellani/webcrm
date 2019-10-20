@@ -149,7 +149,7 @@ public class CaseAjaxServlet extends HttpServlet {
 
         		
         		
-                String sql =" case when outparam = '无' or outparam= ''  or outparam is null then '' else  'DefaultVar='  end || 'com.'||modulecode||'.'||comcode||'('||case when paramvalue = '无' or paramvalue = '' then '' else paramvalue end                               ||')>>>说明:' ||t.comname  from web_component  t    where isprivate in ("+isPrivate+") and result='已发布' ";
+                String sql ="select  case when outparam = '无' or outparam= ''  or outparam is null then '' else  'DefaultVar='  end || 'com.'||modulecode||'.'||comcode||'('||case when paramvalue = '无' or paramvalue = '' then '' else paramvalue end                               ||')>>>说明:' ||t.comname  from web_component  t    where isprivate in ("+isPrivate+") and result='已发布' ";
             	try {
 
 				if(!module.equals("")){
