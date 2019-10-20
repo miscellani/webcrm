@@ -150,7 +150,7 @@ public class TranslateLogic {
 	
 	
 	
-	
+
 	
 	
 	
@@ -563,8 +563,12 @@ public class TranslateLogic {
 	public static void main(String[] s) throws Exception{
 		TranslateLogic translateLogic = new TranslateLogic();
 		//translateLogic.translateHalf("}}abc;abc;");
-		translateLogic.translateHalf("}}}");
-
+/*		translateLogic.translateHalf("}}}");
+*
+*
+*/        
+		 String ss="  number=getnumberbykey(sqlKey)";
+		 translateLogic.TranslateNormal(ss);
 	}
 	//}}abc;abc; 或者 }abc;abc;
 	public String translateHalf(String content) throws Exception{
