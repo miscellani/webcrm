@@ -775,6 +775,7 @@ public class CaseHandle {
 			if(paramNames!=null){
 				
 			
+				//CASE入参保存值，只支持string
 			for(int i=0;i<paramNames.length;i++){
 				String varName=paramNames[i];
 				String varvalue=paramValues[i];
@@ -875,23 +876,62 @@ public class CaseHandle {
 					
 					
 					
+					
+					
+/*					//保存之前需要判断是否重复定义，是则要删除前缀
 					opStringBufferTemp.append(backLine);
-
 					
-
 					
-									
+					
+					
+					//判断有定义字符串变量赋值就加到savedata中，其他如list数据后续也要保存
 					if(backLine.contains("String ")){
 					      // if(1==2){
 				       			//String bdc="456";
 						String varName = dataUtil.patternText(backLine, "String (.*?)=");
 						//String varName=backLine.split("=")[0].split(" ")[1];
+						varName=varName.trim();
 						opStringBufferTemp.append("			saveData = saveData +\""+varName+"=\"+"+varName+"+\"|\";\n");	
 						opStringBufferTemp.append("			resultMap.put(\"saveData\", saveData);\n");	
 
 						
 						dataVarName.add(varName);
 					}
+					*/
+					//有返回值
+					String backLineTemp= backLine.trim();
+					if(backLineTemp.startsWith("String ")||backLineTemp.startsWith("ArrayList<WebElement> ")||backLineTemp.startsWith("String ")
+							||backLineTemp.startsWith("WebElement ")||backLineTemp.startsWith("boolean ")||backLineTemp.startsWith("int ")){
+						
+						String varNametemp = dataUtil.patternText(backLine, "(.*?)=");
+						varNametemp=varNametemp.trim();
+						String[] varNamelist=varNametemp.split(" ");
+						String varType=varNamelist[0];
+						String varname=varNamelist[1];
+						if(opStringBufferTemp.toString().contains(varNametemp)){
+							//重复变量
+							opStringBufferTemp.append(backLine.replace(varType+" ", ""));
+						}else{
+							//不重复变量
+							opStringBufferTemp.append(backLine);
+
+						}
+						//不判断变量类型直接保存
+						opStringBufferTemp.append("			saveData = saveData +\""+varname+"=\"+"+varname+"+\"|\";\n");	
+						opStringBufferTemp.append("			resultMap.put(\"saveData\", saveData);\n");	
+						
+					}else{
+						//无返回值
+						opStringBufferTemp.append(backLine);
+					}
+					
+
+					
+					
+					
+					
+					
+					
 				}
 
 
