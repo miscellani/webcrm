@@ -231,8 +231,57 @@ public class ComHandle {
 
 					}
 					
-					opStringBufferTemp.append(backLine);
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					///opStringBufferTemp.append(backLine);
 
+					
+					
+					//有返回值
+					String backLineTemp= backLine.trim();
+					if(backLineTemp.startsWith("String ")||backLineTemp.startsWith("ArrayList<WebElement> ")||backLineTemp.startsWith("String ")
+							||backLineTemp.startsWith("WebElement ")||backLineTemp.startsWith("boolean ")||backLineTemp.startsWith("int ")){
+						
+						String varNametemp = dataUtil.patternText(backLine, "(.*?)=");
+						varNametemp=varNametemp.trim();
+						String[] varNamelist=varNametemp.split(" ");
+						String varType=varNamelist[0];
+						String varname=varNamelist[1];
+						if(opStringBufferTemp.toString().contains(varNametemp)){
+							
+							//重复变量
+							opStringBufferTemp.append(backLine.replace(varType+" ", ""));
+						}else{
+							//不重复变量
+							opStringBufferTemp.append(backLine);
+
+						}
+						
+					}else{
+						//无返回值
+						opStringBufferTemp.append(backLine);
+					}
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					
 				
 				}
 
