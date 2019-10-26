@@ -138,7 +138,7 @@ public class ComAddServlet extends HttpServlet {
 			request.getRequestDispatcher("/jsp/caseManage/case_save.jsp").forward(request, response);
 
 		}else{
-			request.setAttribute("result", map.get("message"));
+			request.setAttribute("result", map.get("组件保存失败"));
 			request.setAttribute("cominfo", webComponentBean);
 
 			request.getRequestDispatcher("/jsp/comdev/comdev_add.jsp").forward(request, response);
