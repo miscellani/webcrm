@@ -107,16 +107,11 @@ public class ComReleaseServlet extends HttpServlet {
 
 					}
 				}
-				
-				
-				
-				
-				//System.out.println(className);
-				//String[] classmethod = className.split("\\.");
-				
+		
 			}
 			
-			
+			//将comlist中的class文件修改名字为备份
+			System.out.println("comlist:"+comlist);
 			compilerResult = caseHandle.compilerJavaFile(rootPath,module,pathFile,comlist);
 			
 
@@ -126,9 +121,14 @@ public class ComReleaseServlet extends HttpServlet {
 					/*DataUtil dataUtil = new DataUtil();
 					message=dataUtil.getTrace(e);*/
 					compilerResult ="脚本转义失败，请检查脚本内容";
+					//将comlist中的class文件修改名字改回到原名字
 				}
 
                   if(compilerResult.equals("true")){
+                	  
+                	  //将comlist中备份的class文件删除
+                	  
+                	  
           			try {
           				webComponentDao.updateReleaseComponent(comId);
 					} catch (Exception e) {
