@@ -900,8 +900,8 @@ public class CaseHandle {
 					*/
 					//有返回值
 					String backLineTemp= backLine.trim();
-					if(backLineTemp.startsWith("String ")||backLineTemp.startsWith("ArrayList<WebElement> ")||backLineTemp.startsWith("String ")
-							||backLineTemp.startsWith("WebElement ")||backLineTemp.startsWith("boolean ")||backLineTemp.startsWith("int ")){
+					if(backLineTemp.startsWith("String ")||backLineTemp.startsWith("String ")
+							||backLineTemp.startsWith("boolean ")||backLineTemp.startsWith("int ")){
 						
 						String varNametemp = dataUtil.patternText(backLine, "(.*?)=");
 						varNametemp=varNametemp.trim();
@@ -919,19 +919,13 @@ public class CaseHandle {
 						//不判断变量类型直接保存
 						opStringBufferTemp.append("			saveData = saveData +\""+varname+"=\"+"+varname+"+\"|\";\n");	
 						opStringBufferTemp.append("			resultMap.put(\"saveData\", saveData);\n");	
+						dataVarName.add(varname);
 						
 					}else{
 						//无返回值
 						opStringBufferTemp.append(backLine);
 					}
-					
-
-					
-					
-					
-					
-					
-					
+										
 				}
 
 
@@ -1779,18 +1773,9 @@ public class CaseHandle {
             File sourceFile = new File(newJavaFilePath); 
             sourceFileList.add(sourceFile);
             
-            //加入组件Java文件
-/*            if(!comlist.isEmpty()){
-            	
-            	for(String comname :comlist ){
-                    String pathClass=rootPath+File.separator+"classes"+File.separator+"cases"+File.separator+"com"+File.separator+comname+".java";
-                    sourceFileList.add(new File(pathClass));
 
-            	}
-            	
-            }*/
-            
-            //组件调用组件的情况，要递归查询所有关联的组件，先用最简单的方法，后续再优化
+        	        
+           //组件调用组件的情况，要递归查询所有关联的组件，先用最简单的方法，后续再优化
             FileUtil fileUtil = new FileUtil();
             ArrayList<String> ff = fileUtil.getAllFileName(rootPath+File.separator+"classes"+File.separator+"cases"+File.separator+"com"+File.separator);
         	for(String ftemp :ff ){
@@ -1801,6 +1786,38 @@ public class CaseHandle {
 
         	}
             
+        	
+        	
+        	
+        	/*  
+            //加入组件Java文件
+             if(!comlist.isEmpty()){
+            	
+            	for(String comname :comlist ){
+                    String pathClass=rootPath+File.separator+"classes"+File.separator+"cases"+File.separator+"com"+File.separator+comname+".java";
+                    //E:\apache-tomcat-8.5.34\webapps\webcrm\WEB-INF\classes\cases\com\MainPage.java
+                    sourceFileList.add(new File(pathClass));
+
+            	}
+            	
+            }
+        	
+        	*/
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
+        	
             
             // 没有java文件，直接返回
             if (sourceFileList.size() == 0) {
