@@ -176,7 +176,8 @@ public class ComHandle {
 
 			           String backLine="";
 				for (int k = 0; k < opStepsList.size(); k++) {
-					String lineContentString = opStepsList.get(k);					
+					String lineContentString = opStepsList.get(k);		
+				
 					lineContentString = lineContentString.replace("\n", "").replace("\r", "");					
 					if( (lineContentString==null) || (lineContentString.equals("")) || (lineContentString.equals("null")) ){
 						continue;
