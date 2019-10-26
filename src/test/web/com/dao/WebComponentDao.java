@@ -166,8 +166,10 @@ public class WebComponentDao{
 		int  comId = comInfo.getComId();
 		String moduleCode =  comInfo.getModuleCode();
 		String comCode =  comInfo.getComCode();
-		String sqls ="select comid from web_component where modulecode='"+moduleCode+"' and comcode='"+comCode+"' and comid<>'"+comId+"'" ;
-		if(configDbOperate.searchStrings(sqls).size()>0){
+		String sqls ="select  comid||'|'||modulecode||'|'||comcode||'|'||paramname||'|'||outparam from web_component where modulecode='"+moduleCode+"' and comcode='"+comCode+"' and comid<>'"+comId+"'" ;
+		
+		ArrayList stringList= configDbOperate.searchStrings(sqls);
+		if(stringList.size()>0){
 			
 			
 			map.put("result", false);
@@ -178,9 +180,53 @@ public class WebComponentDao{
 
 		}
 		
-         //
+
 		
 		
+		
+		
+    
+        //新增逻辑，提前获取原数据，如果组件修改了模块名，组件名，入参或出参，才更新CASE
+        //
+	    sqls ="select  comid||'|'||modulecode||'|'||comcode||'|'||paramname||'|'||outparam from web_component where modulecode='"+moduleCode+"' and comcode='"+comCode+"' and comid='"+comId+"'" ;
+		
+	   
+			 stringList= configDbOperate.searchStrings(sqls);
+
+			 String oldcom =null;
+		try {
+		
+			oldcom= (String) stringList.get(0);
+		} catch (Exception e) {
+			// TODO: handle exception
+			map.put("result", false);
+			map.put("message", "不能修改组件模块or组件编码!提交失败");
+			
+			
+			return map;
+		}
+		
+		String[] oldcoms=oldcom.split("\\|");
+        String oldmodulecode=  oldcoms[1];
+        String oldcomcode=oldcoms[2];
+        String oldparamname="";
+        try {
+            oldparamname=oldcoms[3];
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+        String outparam="";
+        try {
+        	outparam=oldcoms[4];
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+        
+        
+        
+        
+        
+        
 		
 		
 		
@@ -225,7 +271,12 @@ public class WebComponentDao{
 
                 
                 
-                //3.获取所有调用过这个组件的模块的CASE
+
+                //3.获取所有调用过这个组件的模块的CASE 
+                if( !oldmodulecode.equals(comInfo.getModuleCode())  || !oldcomcode.equals(comInfo.getComCode()) ||  !oldparamname.equals(comInfo.getParamName()) || !outparam.equals(comInfo.getOutParam()) ){
+                
+                
+                
                 WebCaseDao webCaseDao = new WebCaseDao();
 		        ArrayList<String> relCase = webCaseDao.getRelCase(moduleCode);
                 //更新这些CASE状态到未发布
@@ -247,7 +298,7 @@ public class WebComponentDao{
 		        }
                 
 		        
-		        
+                }
 		        
 		        
 		        
