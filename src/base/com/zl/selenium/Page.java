@@ -52,6 +52,21 @@ public class Page {
 	}
 	
 	/**
+	 * 获取元素
+	 * 
+	 * @param by
+	 *            查找方式
+	 * @return WebElement元素对象
+	 * @throws InterruptedException 
+	 */
+	public WebElement getelebyelement(WebElement ele,String xpath)  {
+		return ele.findElement(By.xpath(xpath));
+
+
+	}
+	
+	
+	/**
 	 * 获取元素list
 	 * 
 	 * @param by
@@ -94,7 +109,15 @@ public class Page {
 	 * @return list 内含WebElement
 	 */
 	public ArrayList<WebElement> getlistbyele(By by,WebElement element) {
-		return (ArrayList<WebElement>) element.findElements(by);
+		this.modifyimplicitlwaittime(2);
+		ArrayList<WebElement> listweb=new ArrayList<WebElement>();
+		try {
+			listweb=(ArrayList<WebElement>) element.findElements(by);
+		} finally {
+			// TODO: handle finally clause
+			this.modifyimplicitlwaittime(10);
+		}		
+		return listweb;
 	}
 	
 	
@@ -598,9 +621,9 @@ public class Page {
 	public void clickelement(WebElement webElement) throws InterruptedException {
 		
 		this.hLightElement(webElement);
-		((JavascriptExecutor) this.webDriver).executeScript(
-				"arguments[0].click();", webElement);
-
+/*		((JavascriptExecutor) this.webDriver).executeScript(
+				"arguments[0].click();", webElement);*/
+		webElement.click();
 	}
 	
 	
