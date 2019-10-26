@@ -355,7 +355,7 @@ public class FileUtil {
 			String fileName="";
 			for(File file : fileList){
 				fileName = file.getName();
-				System.out.println(fileName);
+				//System.out.println(fileName);
 				list.add(fileName);
 			}
 		}catch (Exception e) {
