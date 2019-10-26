@@ -278,8 +278,15 @@ public int getint(String i){
         return  Integer.parseInt(i);
 }
 
-
-
+/**
+ * 传入int返回对应的字符串
+ * @param b
+ * @return
+ */
+public String getstring(int stringinit){
+	
+	return   Integer.toString(stringinit)  ;
+}
 
 
 /**
