@@ -502,23 +502,23 @@
                  // document.getElementById(id).value=document.getElementById(id).value+this.innerText;
                  var bb=this.innerText;
                  var origintext=document.getElementById(id).value;
-               //  alert("提示:"+bb);
-               //  alert("原文:"+origintext);
+                 alert("提示:"+bb);
+                 alert("原文:"+origintext);
                  var temptext="";
                  temptextlist=origintext.match(/([\d\D]*);{1,}/);
                  //匹配删除输入不完整的部分
                  if(temptextlist== undefined || temptextlist.length == 0){
-                 	//alert("未匹配");  	
+                 	alert("未匹配");  	
                  }else{
-                 	//alert("有匹配:"+temptextlist); 
+                 	alert("有匹配:"+temptextlist); 
                  
                  	temptext=temptextlist[temptextlist.length-1]+";\n";
                  }
                
-                //alert("截取原文:"+temptext);            
+                alert("截取原文:"+temptext);            
                 var newstring=bb.match(/(.*)>{3}/)[1]+";";
                 
-               // alert("匹配提示结果:"+newstring);
+               alert("匹配提示结果:"+newstring);
                  document.getElementById(id).value=temptext + newstring;
                  
                  
