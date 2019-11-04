@@ -257,8 +257,9 @@ public class TranslateLogic {
 				lineContentStringtemps = lineContentStringtemp.split("\\(");
 				
 					lineContentStringtemp =lineContentStringtemps[0];
+					System.out.println(lineContentString);
 					paraType=configDbOperate.searchString("select t.paratype from web_config t where paracode  = '"+lineContentStringtemp.trim()+"'");
-					lineContentString = lineContentString.replace(lineContentStringtemp, paraType+"."+lineContentStringtemp);
+					lineContentString = lineContentString.replaceFirst(lineContentStringtemp, paraType+"."+lineContentStringtemp);
 
             }
 			
@@ -461,7 +462,7 @@ public class TranslateLogic {
 
 		}
 		DataUtil dataUtil = new DataUtil();
-		String logicString =dataUtil.patternText(content, "\\}else if\\((.*)\\)\\{");
+		String logicString =dataUtil.patternText(content, "\\}else if\\((.*)\\).*\\{");
 		if(logicString.contains("\"")){
 			logicString.replace("\"", "");
 			
