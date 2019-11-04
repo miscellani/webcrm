@@ -323,11 +323,11 @@ public class WebComponentDao{
 
 			if (i > 0) {
 				map.put("result", true);
-				map.put("message", "组件更新成功");
+				map.put("message", "组件保存成功");
 				return map;
 			}else{
-				map.put("result", true);
-				map.put("message", "组件更新失败");
+				map.put("result", false);
+				map.put("message", "组件保存失败");
 				return map;
 
 			}
