@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import com.gargoylesoftware.htmlunit.javascript.host.media.webkitMediaStream;
 import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
 import com.sun.corba.se.spi.orbutil.fsm.Action;
 
@@ -34,6 +35,17 @@ public class Page {
         this.webDriver= webDriver;
 		action = new Actions(this.webDriver);
 	}
+	
+	
+	/**
+	 * 访问链接地址
+	 * @param url
+	 */
+	public void openurl(String url){
+		OpWebDriver opWebDriver = new OpWebDriver();
+		opWebDriver.get(this.webDriver, url);
+	}
+	
 
 	/**
 	 * 获取元素
@@ -60,7 +72,9 @@ public class Page {
 	 * @throws InterruptedException 
 	 */
 	public WebElement getelebyelement(WebElement ele,String xpath)  {
-		return ele.findElement(By.xpath(xpath));
+		WebElement element=ele.findElement(By.xpath(xpath));
+		this.hLightElement(element);
+		return element;
 
 
 	}
@@ -155,7 +169,6 @@ public class Page {
 			String Value) {
          String  attrname="";
 		for (WebElement webElement : this.getelementlist(by)) {
-			this.hLightElement(webElement);
 			try{
 				attrname=webElement.getAttribute(attrName);
 			}catch (Exception e) {
@@ -192,6 +205,7 @@ public class Page {
 	
     public void clicklistbytext(By by, String context){
     	WebElement webElement = this.geteleinlistbytext(by, context);
+		this.hLightElement(webElement);
     	webElement.click();
     }
     public void clicklistbyattrvalue(By by, String attrName,String Value){
@@ -201,6 +215,7 @@ public class Page {
     
     public void clicklistbyindex(By by, String index){
     	WebElement webElement = this.geteleinlistbyindex(by, index);
+		this.hLightElement(webElement);
     	webElement.click();
     }
     
@@ -248,7 +263,6 @@ public class Page {
         	WebElement webElement = this.getelement(by);
         	webElement.click();
         	//this.jsclick(by);
-        	this.hLightElement(webElement);
         	Thread.sleep(1000);
         	String eId=webElement.getAttribute("id");
         	eId=eId.replace("_span", "");
@@ -571,6 +585,7 @@ public class Page {
 	 */
 	public void aclick(By by) throws InterruptedException{
 		WebElement element=this.webDriver.findElement(by);
+		this.hLightElement(element);
         Actions actions = new Actions(this.webDriver);
         actions.moveToElement(element).click();
 	     
@@ -605,7 +620,9 @@ public class Page {
 	public  void dclick(By by) throws InterruptedException {
 
          Actions act = new Actions(this.webDriver);
-            act.doubleClick(this.webDriver.findElement(by)).build().perform();
+         WebElement element=this.webDriver.findElement(by);
+ 		this.hLightElement(element);
+            act.doubleClick(element).build().perform();
 
          }
 	
@@ -742,6 +759,18 @@ public class Page {
 		}
 
 	}
+	
+	/**
+	 * 获取元素文本内容，非文本框内容
+	 * 
+	 * @param by
+	 * @return 文本内容
+	 */
+	public String geteletext(WebElement webElement){
+		this.hLightElement(webElement);
+		return webElement.getText();
+	}
+	      
 
 	/**
 	 * 获取文本框中输入的内容
@@ -796,7 +825,7 @@ public class Page {
 	 */
 	public String getattrvaluebyele(WebElement ele, String attrName) {
 		
-		
+
 		return ele.getAttribute(attrName);
 
 	}
@@ -811,7 +840,6 @@ public class Page {
 	 */
 	public void setattrvalue(By by,String attrName,String attrValue){
 		WebElement webElement = this.webDriver.findElement(by);
-		this.hLightElement(webElement);
 /*	((JavascriptExecutor) this.webDriver).executeScript(
 			"arguments[0].setAttribute(arguments[1],arguments[2])",
 			webElement, attrName, attrValue);*/
