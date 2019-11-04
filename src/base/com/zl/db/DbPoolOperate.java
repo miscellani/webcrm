@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.HashMap;
 
-
+import javax.sound.midi.MidiDevice.Info;
 
 import base.com.zl.utils.FileUtil;
 
@@ -64,14 +64,7 @@ public class DbPoolOperate {
              
          }catch (Exception e) {
              e.printStackTrace();
-
-              ds.setJdbcUrl("jdbc:oracle:thin:@10.3.3.218:1521:jxcrm");
-              ds.setUser("aiqry");
-              ds.setPassword("aiqry");
-              ds.setInitialPoolSize(1);
-              ds.setMinPoolSize(1);
-              ds.setMaxPoolSize(1);
-              ds.setMaxIdleTime(1);
+             
           }
 
          
