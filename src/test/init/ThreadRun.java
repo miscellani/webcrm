@@ -30,23 +30,23 @@ public class ThreadRun implements Runnable{
 		OpWebDriver opWebDriver = new OpWebDriver();
 		String[] runConfig = userIp.split("\\,");
 		WebDriver webDriver = null;
-		try {
+		
+		
+		
+		
+		
+/*		try {
 			webDriver = opWebDriver.openRBrower(runConfig[0],runConfig[1]);
 		} catch (MalformedURLException e2) {
 			// TODO Auto-generated catch block
 			e2.printStackTrace();
 		}
-		//LoginPage loginPage = new LoginPage(webDriver);
 		cases.com.LoginPage loginPage = new cases.com.LoginPage(webDriver);
-		//PWorkDeskPage workDeskPage = new PWorkDeskPage(webDriver);
 		ConfigDbOperate configDbOperate = new ConfigDbOperate();
 		DataUtil dataUtil = new DataUtil();
 		try {
-			opWebDriver.get(webDriver,WebInit.mWebUrl);
-			//loginPage.locateWeb();
-			
+			opWebDriver.get(webDriver,WebInit.mWebUrl);			
 			loginPage.login(WebInit.pointLogin,WebInit.opId, WebInit.opPass);
-			//workDeskPage.gotoBusiness(Init.platform);
 		} catch (Exception e) {
 			// TODO: handle exception
 			Log.info("-----操作员登陆失败,请查看环境和配置");
@@ -54,14 +54,41 @@ public class ThreadRun implements Runnable{
 			Log.info("-----操作员登陆失败,请查看环境和配置");
 			e.printStackTrace();
 
-		}
+		}*/
 		
 		CaseHandle caseHandle = new CaseHandle();
 		String stop = "0";
 		String currentCaseNum = "";
 		for (int j = 0; j < perDivideCaseList.size() ; j++) {	
 
+          ///落到循环启动关闭
+			try {
+				webDriver = opWebDriver.openRBrower(runConfig[0],runConfig[1]);
+			} catch (MalformedURLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+			cases.com.LoginPage loginPage = new cases.com.LoginPage(webDriver);
+			ConfigDbOperate configDbOperate = new ConfigDbOperate();
+			DataUtil dataUtil = new DataUtil();
+			try {
+				opWebDriver.get(webDriver,WebInit.mWebUrl);			
+				loginPage.login(WebInit.pointLogin,WebInit.opId, WebInit.opPass);
+			} catch (Exception e) {
+				// TODO: handle exception
+				Log.info("-----操作员登陆失败,请查看环境和配置");
+				Log.info("-----操作员登陆失败,请查看环境和配置");
+				Log.info("-----操作员登陆失败,请查看环境和配置");
+				e.printStackTrace();
 
+			}
+			
+			
+			
+			
+			
+			
+			
 				
 			try {
 				webDriver = caseHandle.excuteCases(webDriver, runConfig[0],runConfig[1],(String) perDivideCaseList.get(j));
@@ -91,6 +118,12 @@ public class ThreadRun implements Runnable{
 					break;
 					
 				}
+				
+				
+				//添加关闭浏览器
+				opWebDriver.close(webDriver);
+				
+				
 
 				WebInit.downCurrentCaseNum();
 				currentCaseNum =WebInit.getCurrentCaseNum();
