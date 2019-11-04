@@ -589,7 +589,7 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 		
 		
 		/**  
-		 * 获取操作号码
+		 * 获取操作号码1
 		 * @param sqlKey
 		 * @param linkValue
 		 * @return
@@ -612,7 +612,7 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 	       // if((linkValue==null)|| (linkValue.equals("null"))){
 	        if(sqlKeys.length==1){
 	      	   sql= " select *  from  ( "+sql +"  ) where rownum< 100 order by dbms_random.value";
-	      	   
+		      	 Log.info("无入参numberkey:"+sql);
 	      	   try{
 		        	resultMap =dbOperate.searchMaps(sql).get(0);
 
@@ -639,7 +639,7 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 	        	}
 	      	   sql= " select *  from  ( "+sql +"  ) where rownum< 100 order by dbms_random.value";
 	      	 System.out.println(sql);
-	      	 Log.info("numberkey最终转化为:"+sql);
+	      	 Log.info("多入参numberkey:"+sql);
 	      	   try{
 		        	resultMap =dbOperate.searchMaps(sql).get(0);
 
@@ -670,13 +670,29 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 	             System.out.println(sql);
 
 	           //s =dbOperate.searchStrings(sql).get(0);
-		      	 Log.info("numberkey最终转化为:"+sql);
-	             resultMap =dbOperate.searchMaps(sql).get(0);
-	     		for(String mapValue : resultMap.values()){
+		      	 Log.info("1入参numberkey:"+sql);
+		      	 
 
-	            	s=mapValue+","+s;
-	        		}
-		
+		      	 try {
+	             resultMap =dbOperate.searchMaps(sql).get(0);
+	             
+	             
+	             
+		      	 Log.info("小丕权返回结果:"+resultMap.toString());
+
+			     		for(String mapValue : resultMap.values()){
+
+			            	s=mapValue+","+s;
+			        		}
+				} catch (Exception e) {
+					// TODO: handle exception
+			      	 DataUtil dataUtil = new DataUtil();
+			      	 
+			      	 Log.info("小丕权报错了"+dataUtil.getTrace(e));
+
+				}
+
+		      	 Log.info("最终返回结果:"+s.substring(0,s.length()-1));
 				return s.substring(0,s.length()-1);
 			
 
