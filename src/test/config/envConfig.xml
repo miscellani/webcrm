@@ -93,7 +93,8 @@
 
 
   <!--基线平台数据配置(测试环境)--> 
-  <Version name="config">    
+  <Version name="config"> 
+    <prov>基线</prov>    
     <dbUrl>jdbc:oracle:thin:@172.17.30.24:1521:basecrmdev</dbUrl>
     <dbUser>aitest:Pass!123</dbUser>
     <maxPoolSize>15</maxPoolSize> 
@@ -103,7 +104,7 @@
 
   <!--基线现场订单中心测试环境--> 
   <Version name="run">   
-    <env>测试环境</env> 
+    <env>基线</env> 
     <pWebUrl>http://172.17.30.14:8080/web-order/order</pWebUrl> 
     <mWebUrl>http://172.17.30.14:8080/web-order/order</mWebUrl> 
     <pointLogin>0</pointLogin>
