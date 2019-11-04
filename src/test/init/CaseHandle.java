@@ -128,37 +128,37 @@ public class CaseHandle {
 
 
 
-		//HashMap<String, String> hashMap = new HashMap<>();
-		//hashMap.put("result", "成功");
-		//hashMap.put("saveData", "");
+		HashMap<String, String> hashMap = new HashMap<>();
+		hashMap.put("result", "成功");
+		hashMap.put("saveData", "");
 		StringBuffer stringBuffer =  new StringBuffer();
 		stringBuffer.append(module+ "_" + businessMenu + "_"+ caseId + "操作开始\n"+"开始时间："+startTime);
 
 		HashMap reTurnMap = new HashMap<>();
 
-		//try {
+		try {
 			reTurnMap = this.reflectMethod(webDriver,module,classname, interfacename, paramValue,caseId);
 			stringBuffer.append(reTurnMap.get("message"));
-			//hashMap.put("saveData", (String) reTurnMap.get("saveData"));
+			hashMap.put("saveData", (String) reTurnMap.get("saveData"));
 
 	
 
-		/*} catch (Exception e) {
+		} catch (Exception e) {
 		     String screenpath = caseDir +"执行操作步骤异常 "+ ".png";
 		     opWebDriver.screenShot(webDriver,screenpath);
 			e.printStackTrace();
 			DataUtil dataUtil = new DataUtil();
 			hashMap.put("result", "失败");
 			stringBuffer.append(module+ "_" + businessMenu + "_"+ caseId + "操作异常\n");
-			stringBuffer.append(dataUtil.getTrace(e)+"\n");*/
+			stringBuffer.append(dataUtil.getTrace(e)+"\n");
 
 
 			// TODO: handle exception
-            Exception e = new Exception();
-            e= (Exception)reTurnMap.get("exception");
-            DataUtil dataUtil = new DataUtil();
+           // Exception e = new Exception();
+           // e= (Exception)reTurnMap.get("exception");
+            //DataUtil dataUtil = new DataUtil();
             
-            if(e!=null){ 
+/*            if(e!=null){ 
 			String causename = "";
 			String causemessage = "";
 			try {
@@ -171,16 +171,16 @@ public class CaseHandle {
 				e2.printStackTrace();
 				stringBuffer.append("CASE执行报错："+"\n");
 				stringBuffer.append(dataUtil.getTrace(e2)+"\n");
-			}
+			}*/
 			
 			
 			
 			
-			cases.com.LoginPage loginPage = new cases.com.LoginPage(webDriver);            
+			//cases.com.LoginPage loginPage = new cases.com.LoginPage(webDriver);            
 			//WorkDeskPage workDeskPage = new WorkDeskPage(webDriver);
             
             
-            
+			/* 
 
 			if (causename.equals("NoSuchWindowException")) {
 
@@ -211,7 +211,7 @@ public class CaseHandle {
 
 				}
 
-			} else {/*
+			} else {
 
 				
 				
@@ -264,7 +264,7 @@ public class CaseHandle {
 					}
 				}
 
-			*/}
+			}*/
 
 			
 
@@ -291,7 +291,7 @@ public class CaseHandle {
 		webCaseBean.setFee(fee.get(2)*60);
 		webCaseExecuteDao.updateExecuteCase(webCaseBean);
 		
-	
+		
 		return webDriver;
 	}
 
@@ -1069,7 +1069,7 @@ public class CaseHandle {
 				for (int k = 0; k < checkSteps.length; k++) {
 					String lineContentString = checkSteps[k];
 					lineContentString = lineContentString.replace("\n", "").replace("\r", "");
-
+					lineContentString = lineContentString.trim();
 					
 					if( (lineContentString==null) || (lineContentString.equals("")) || (lineContentString.equals("null")) ){
 						continue;
