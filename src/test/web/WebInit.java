@@ -98,7 +98,7 @@ public class WebInit {
 		opPass = (String) enivMap.get("opPass");
 
 		filterType = (String) map.get("filterType");	
-        
+        String prov=(String) enivMap.get("prov");
 		String smoke = (String) map.get("smoke");
 		
 		DateUtil dateUtil = new DateUtil();
@@ -572,7 +572,7 @@ public class WebInit {
             
             //邮件的标题
             String now = dateUtil.now();
-            subject=env+"--香港CRM页面自动化冒烟测试结果-"+now;
+            subject=env+"--"+prov+"CRM页面自动化冒烟测试结果-"+now;
             //发送邮件
             Sendmail sendmail = new Sendmail();
             sendmail.sendSimpleMail(map,mailSend, sendToList, sendCCList, subject, mailContent);
