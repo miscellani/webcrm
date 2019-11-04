@@ -118,7 +118,7 @@ public class ComHandle {
             ArrayList<String> dataVarName =new ArrayList<String>();
 
 			if(paramName==null){
-				opStringBufferTemp.append("	public "+outParamValue+""
+				opStringBufferTemp.append("	public "+outParamValue+" "
 						+comCode
 						+ "() throws Exception {\n");
 			}else{
