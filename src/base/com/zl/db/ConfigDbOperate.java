@@ -173,6 +173,7 @@ public class ConfigDbOperate extends ConfigDbPoolOperate {
 	@SuppressWarnings("finally")
 	public String searchString(String sql){
 		
+		System.out.println(sql);
 		String string = "";
 		try {
 			string= this.searchStrings(sql).get(0);
