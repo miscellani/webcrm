@@ -310,7 +310,8 @@
          }
          xmlHttp = createXmlHttp();
          //给服务器发送数据
-         var url = "<%=basePath%>servlet/CaseAjaxServlet?keywords="+encodeURI(content)+"&paratype="+name+"&menuCode="+menuCode; 
+         var type="case";
+         var url = "<%=basePath%>servlet/CaseAjaxServlet?keywords="+encodeURI(content)+"&paratype="+name+"&menuCode="+menuCode+"&type="+type; 
          xmlHttp.open("GET",url,true);
          xmlHttp.onreadystatechange =     //回调函数
              function callback()
