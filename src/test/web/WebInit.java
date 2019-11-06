@@ -215,10 +215,10 @@ public class WebInit {
 
 				} catch (Exception e) {
 					// TODO: handle exception
-		            hashMap.put("result", "错误");
+		            hashMap.put("result", "校验报错");
 		            
 		            hashMap.put("message", dataUtil.getTrace(e));
-
+		            Log.info("caseId="+caseId+":用例校验报错:\n"+hashMap.get("message")+"\n");
 				}
 	            
 	            
@@ -232,6 +232,7 @@ public class WebInit {
 				webCaseExecuteDao.updateExecuteCase(webCaseBean);
 	            Log.info("caseId="+caseId+":校验步骤结束");
 	            Log.info("caseId="+caseId+":调试用例结束,结果="+hashMap.get("result"));
+
 				return;
 				
 		}
