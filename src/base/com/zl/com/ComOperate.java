@@ -456,7 +456,7 @@ public class ComOperate {
 	 * @return
 	 * @throws Exception
 	 */
-	public HashMap<String, String> menucheck(String sqlKey,String menuName,String containsContent) throws Exception{
+/*	public HashMap<String, String> menucheck(String sqlKey,String menuName,String containsContent) throws Exception{
 	
          Page page = new Page(webDriver);
          PageCheck pageCheck = new PageCheck(webDriver,this.mainCaseId);
@@ -474,10 +474,10 @@ public class ComOperate {
 				try{
 					String pageconent = page.gettext(By.xpath(bceTip_xpath));
 					pageCheck.checkcontains(pageconent, containsContent, menuName+"-规则校验", resultMap,this.mainCaseId);
-					/*					resultMap= pageCheck.checkcontains(pageconent, containsContent, menuName+"-规则校验", resultMap,this.mainCaseId);
+										resultMap= pageCheck.checkcontains(pageconent, containsContent, menuName+"-规则校验", resultMap,this.mainCaseId);
 					if(resultMap.get("result").equals("成功")){
 						resultMap.put("result", "正确");
-					}*/
+					}
 				}catch (Exception e) {
 					// TODO: handle exception
 				   e.printStackTrace();
@@ -496,7 +496,7 @@ public class ComOperate {
 		return resultMap;
 		
 
-	}
+	}*/
 
 	
 
