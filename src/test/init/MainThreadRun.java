@@ -2,6 +2,8 @@ package test.init;
 
 import java.util.HashMap;
 
+import base.com.zl.log.Log;
+import base.com.zl.utils.DataUtil;
 import test.web.WebInit;
 
 
@@ -26,6 +28,10 @@ public class MainThreadRun implements Runnable{
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			DataUtil dataUtil =  new DataUtil();
+			Log.info("自动化测试异常:-----\n");
+			Log.info(dataUtil.getTrace(e));
+
 		}
 		
 	}
