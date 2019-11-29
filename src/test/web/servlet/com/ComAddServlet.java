@@ -107,7 +107,7 @@ public class ComAddServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 		if(stringss.size()>0){
-			request.setAttribute("result", "已存在的组件模块+组件编码,请到复制页面新增操作");
+			request.setAttribute("result", "已存在的组件模块+组件编码,请修改组件编码");
 			request.setAttribute("cominfo", webComponentBean);
 
 			request.getRequestDispatcher("/jsp/comdev/comdev_add.jsp").forward(request, response);
