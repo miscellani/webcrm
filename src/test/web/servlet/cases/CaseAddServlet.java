@@ -82,10 +82,10 @@ public class CaseAddServlet extends HttpServlet {
 		caseInfo.setResult("未发布");
 		
 	      String opStep =request.getParameter("opStep");
-	      opStep = opStep.replace("'\"+", "'||chr(39)||'\"'||chr(43)||'").replace("+\"'", "'||chr(43)||'\"'||chr(39)||'");
+	    // opStep = opStep.replace("'\"+", "'||chr(39)||'\"'||chr(43)||'").replace("+\"'", "'||chr(43)||'\"'||chr(39)||'");
 	      caseInfo.setOpStep(opStep);
 	      String checkStep =request.getParameter("checkStep").isEmpty()?"":request.getParameter("checkStep");
-	      checkStep = checkStep.replace("'\"+", "'||chr(39)||'\"'||chr(43)||'").replace("+\"'", "'||chr(43)||'\"'||chr(39)||'");
+	    //  checkStep = checkStep.replace("'\"+", "'||chr(39)||'\"'||chr(43)||'").replace("+\"'", "'||chr(43)||'\"'||chr(39)||'");
 	      caseInfo.setCheckStep(checkStep);
 		caseInfo.setTester(request.getParameter("tester"));
 		caseInfo.setParamName(request.getParameter("paramName").isEmpty()?"":request.getParameter("paramName"));
