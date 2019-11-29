@@ -46,7 +46,7 @@ public class WebCaseExecuteDao {
 		}
 
 		//module,menucode,
-		sqlString = sqlString + " order by t.tester ";
+		sqlString = sqlString + " order by t.tester,t.caseid desc";
 
 		ResultSet res = null;
 		ConfigDbOperate configDbOperate = new ConfigDbOperate();
