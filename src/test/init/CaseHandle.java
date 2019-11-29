@@ -479,7 +479,7 @@ public class CaseHandle {
 		if (filterType.equals("all")) {
 			configDbOperate.delData("delete web_case_current t");
 			configDbOperate
-					.insertData("insert into web_case_current select t.* from web_case t where result='已发布'");
+					.insertData("insert into web_case_current select t.* from web_case t where result='已发布' and caselevel <>'debug'");
 			configDbOperate
 			.updateData("update web_case_current set result='未执行'");
 			
@@ -498,7 +498,7 @@ public class CaseHandle {
 			StringBuffer sqlup = new StringBuffer();
 
 			sql.append("select  caseid  from web_case_current  where 1=1 and caselevel <>'debug' ");
-			sqlup.append("update web_case_current set result='未执行' where 1=1   ");
+			sqlup.append("update web_case_current set result='未执行' where 1=1  and caselevel <>'debug' ");
 			String menuName = filtervalue.get("menuName");
 			String caseName = filtervalue.get("caseName");			
 			String module = filtervalue.get("module");
@@ -680,6 +680,21 @@ public class CaseHandle {
 			
 			String[] opSteps = opStep.split("\\;");
 			
+			
+			String[] opStepstr = opStep.split("\\;");
+			ArrayList<String> opStepsList = new ArrayList<>();
+			//增加逻辑语句，需要二次分割换行符
+			for(String s:opStepstr){
+				String[] opStepstemp = s.split("\n");
+			     for(String ss:opStepstemp){
+			    	 opStepsList.add(ss);
+			    	 System.out.print("++"+ss+"\n");
+			     }
+			}
+			
+			
+			
+			
 
 			String paramName = webCaseBeantemp.getParamName();
 			String paramValue = webCaseBeantemp.getParamValue();
@@ -806,8 +821,8 @@ public class CaseHandle {
 
 
 
-				for (int k = 0; k < opSteps.length; k++) {
-					String lineContentString = opSteps[k];					
+				for (int k = 0; k < opStepsList.size(); k++) {
+					String lineContentString = opStepsList.get(k);					
 					lineContentString = lineContentString.replace("\n", "").replace("\r", "");					
 					if( (lineContentString==null) || (lineContentString.equals("")) || (lineContentString.equals("null")) ){
 						continue;
@@ -876,28 +891,7 @@ public class CaseHandle {
 					
 					
 					
-					
-					
-/*					//保存之前需要判断是否重复定义，是则要删除前缀
-					opStringBufferTemp.append(backLine);
-					
-					
-					
-					
-					//判断有定义字符串变量赋值就加到savedata中，其他如list数据后续也要保存
-					if(backLine.contains("String ")){
-					      // if(1==2){
-				       			//String bdc="456";
-						String varName = dataUtil.patternText(backLine, "String (.*?)=");
-						//String varName=backLine.split("=")[0].split(" ")[1];
-						varName=varName.trim();
-						opStringBufferTemp.append("			saveData = saveData +\""+varName+"=\"+"+varName+"+\"|\";\n");	
-						opStringBufferTemp.append("			resultMap.put(\"saveData\", saveData);\n");	
-
-						
-						dataVarName.add(varName);
-					}
-					*/
+			
 					//有返回值
 					String backLineTemp= backLine.trim();
 					if(backLineTemp.startsWith("String ")||backLineTemp.startsWith("String ")
@@ -930,7 +924,8 @@ public class CaseHandle {
 
 
 
-			
+			opStringBufferTemp.append("			String screenpath = testDir + caseId+File.separator +\"执行操作步骤完成 \"+ \".png\";\n");	
+			opStringBufferTemp.append("			opWebDriver.screenShot(webDriver,screenpath);\n");
 			opStringBufferTemp.append("			} catch (Exception e) {\n");
 			opStringBufferTemp.append("			// TODO: handle exception\n");
 			//opStringBufferTemp.append("			DataUtil dataUtil = new DataUtil();\n");
@@ -1719,9 +1714,16 @@ public class CaseHandle {
 	 */
 	public String  compilerJavaFile(String rootPath,String module,String filePath,ArrayList<String> comlist) throws Exception {
 	
+       // String pathJar = rootPath+File.separator+"lib"+File.separator+"selzl.jar;"+rootPath+File.separator+"lib"+File.separator+"selenium"+File.separator+"selenium-java-3.4.0"+File.separator+"selenium-server-standalone-3.4.0.jar";
         String pathJar = rootPath+File.separator+"lib"+File.separator+"selzl.jar;"+rootPath+File.separator+"lib"+File.separator+"selenium"+File.separator+"selenium-java-3.4.0"+File.separator+"selenium-server-standalone-3.4.0.jar";
+
         System.out.println("加载编译jar包路径:"+pathJar);
         //
+        
+        String pathJar1 = rootPath+File.separator+"lib"+File.separator+"selzl.jar";
+        String pathJar2 = rootPath+File.separator+"lib"+File.separator+"selenium"+File.separator+"selenium-java-3.4.0"+File.separator+"selenium-server-standalone-3.4.0.jar";
+
+        
 
         
         
@@ -1827,9 +1829,12 @@ public class CaseHandle {
             // 获取要编译的编译单元  
             Iterable<? extends JavaFileObject> compilationUnits = fileManager.getJavaFileObjectsFromFiles(sourceFileList);
             String newClassFilePath=rootPath + File.separator + "classes"+ File.separator ;
-          //  Iterable<String> options = Arrays.asList("-encoding", "GBK", "-classpath", pathJar,  "-sourcepath", newJavaFilePath);  "-cp", pathClass,
+            
+            
+            
             Iterable<String> options = Arrays.asList("-encoding", "GBK", "-classpath", pathJar, "-sourcepath", newJavaFilePath);
-  
+          //  Iterable<String> options = Arrays.asList("-encoding", "GBK", "-classpath", pathJar2+";"+pathJar1, "-sourcepath", newJavaFilePath);
+     
             
             //Iterable<String> options = Arrays.asList("-encoding", "GBK", "-classpath", pathJar,      "-d", newClassFilePath,   "-sourcepath", newJavaFilePath);
             //参数1 文件输出，可不指定，我们采用javac命令的-d参数来指定class文件的生成目录
