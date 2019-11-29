@@ -315,6 +315,7 @@ public String substring(String s,String from,String to){
  * @param log
  */
 public void setlog(String log){
+	
 	Log.info(log);
 }
 
