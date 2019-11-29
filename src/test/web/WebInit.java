@@ -208,7 +208,7 @@ public class WebInit {
                 }
 
 			}
-	            Thread.sleep(1500);
+	            Thread.sleep(15000);
 	           // hashMap.put("result", "正确");
 	            try {
 					hashMap = caseHandle.reflectMethod(webDriver, module,menuCode, caseCode+"Check",null,caseId);
@@ -347,19 +347,42 @@ public class WebInit {
 				t.start();
 			}			
 		///操作等待结束	
+			//判断控制是否结束运行
+			String stop="";
 			while (true) {
-				Thread.sleep(2000 * 2);
+				Thread.sleep(5000 * 2);
 				if (getCurrentThreadNum().equals("0")||getCurrentThreadNum().contains("-")) {
 					System.out.println("执行线程已全部循环退出");
 					break;
 
 				}
 				
-				System.out.println("有执行线程尚未关闭");
-	            Log.info("有执行线程尚未关闭");
 
-				System.out.println(getCurrentThreadNum());
-	            Log.info(getCurrentThreadNum());
+				try {
+					
+					stop= dbOperate.searchStrings("select t.stop from web_control t").get(0);
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if(stop.equals("1")){
+
+
+					break;
+					
+				}
+				
+				
+	            Log.info("业务操作执行中....当前执行用户数：");
+			    Log.info(""+WebInit.getCurrentThreadNum()+"个\n");
+		        Log.info("当前待执行CSAE数："+WebInit.getCurrentCaseNum()+"个\n");
+
+
+
+				//System.out.println(getCurrentThreadNum());
+	           // Log.info(getCurrentThreadNum());
 	            
 			}		
 			
@@ -414,7 +437,7 @@ public class WebInit {
 			
 			
 			//线程全部结束才更新状态
-			String stop="0";
+			 stop="0";
 			while (true) {
 				Thread.sleep(1000 * 2);
 			//	stop =dbOperate.searchStrings("select t.stop from web_Control t").get(0);
@@ -424,8 +447,27 @@ public class WebInit {
 					break;
 
 				}
+				
+				
+				try {
+					
+					stop= dbOperate.searchStrings("select t.stop from web_control t").get(0);
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if(stop.equals("1")){
+
+
+					break;
+					
+				}
+				
+				
 			System.out.println("有校验线程尚未关闭");
-            Log.info("有校验线程尚未关闭");
+            Log.info("业务数据校验执行中...");
 
 			System.out.println(getCurrentThreadNum());
             Log.info(getCurrentThreadNum());
@@ -505,6 +547,25 @@ public class WebInit {
 					break;
 
 				}
+				
+				try {
+					
+					stop= dbOperate.searchStrings("select t.stop from web_control t").get(0);
+					
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+				if(stop.equals("1")){
+
+
+					break;
+					
+				}
+				
+				
+				
 			}
 			Log.info("本轮测试结束---------");
 			System.out.println("---测试结束");
@@ -560,13 +621,9 @@ public class WebInit {
               }
               }
 
-            
+			Log.info("收集邮件地址---------");           
             //获取邮件主题
-            String subject ="";
-            
-
-
-    		
+            String subject ="";  		
             //获取正文
             String mailContent="\n,冒烟时间 : "+startDate_+"--"+endDate_+"\n";
             
