@@ -9,7 +9,11 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.springframework.web.filter.ServletContextRequestLoggingFilter;
+
 import com.sun.org.apache.xml.internal.security.Init;
+
+import base.com.zl.log.Log;
 
 public class DataUtil {
 
@@ -306,8 +310,13 @@ public String substring(String s,String from,String to){
 	
 }
 
-
-
+/**
+ * 设置日志输入，用于调试作用
+ * @param log
+ */
+public void setlog(String log){
+	Log.info(log);
+}
 
 /*	public static void main(String[] s ){
 		DataUtil dat= new DataUtil();
