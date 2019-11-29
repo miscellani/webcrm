@@ -1,6 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <config>	
-   
   <!--广西现场联调环境--> 
   <Version name="gxlt">   
     <pWebUrl>http://wtlt.cmcc.gx:60056/</pWebUrl> 
@@ -93,30 +92,28 @@
 
 
   <!--基线平台数据配置(测试环境)--> 
-  <Version name="config"> 
-    <prov>基线</prov>    
+  <Version name="config">    
     <dbUrl>jdbc:oracle:thin:@172.17.30.24:1521:basecrmdev</dbUrl>
     <dbUser>aitest:Pass!123</dbUser>
     <maxPoolSize>15</maxPoolSize> 
     <region>897</region>
-    <mail>zhanglin@asiainfo.com|zhanglin|19849161qaz#</mail>
+    <mail>zhanglin@asiainfo.com|zhanglin|19849161qaz%</mail>
   </Version>
 
-  <!--基线现场订单中心测试环境--> 
+  <!--基线现场订单中心测试环境http://172.17.30.16:8070/web-portal/portal--> 
   <Version name="run">   
-    <env>基线</env> 
-    <pWebUrl>http://172.17.30.14:8080/web-order/order</pWebUrl> 
-    <mWebUrl>http://172.17.30.14:8080/web-order/order</mWebUrl> 
+    <env>测试环境</env> 
+    <prov>基线版本</prov>
+    <pWebUrl>http://172.17.30.16:8070/web-portal/portal</pWebUrl> 
+    <mWebUrl>http://172.17.30.16:8070/web-portal/portal</mWebUrl> 
     <pointLogin>0</pointLogin>
     <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
-    <dbUrl>jdbc:oracle:thin:@172.17.30.24:1521:basecrmdev</dbUrl>
+    <dbUrl>jdbc:oracle:thin:@172.17.30.27:1521:basecrmtest</dbUrl>
     <dbUser>aitest:Pass!123</dbUser>
     <maxPoolSize>15</maxPoolSize> 
     <region>897</region>
     <orgId>10000001</orgId>
-    <opId>P91110010</opId>
+    <opId>91110011</opId>
     <opPass>123456</opPass>
   </Version>
-
-  
 </config>
