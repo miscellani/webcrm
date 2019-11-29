@@ -391,7 +391,7 @@ public class MMainPage extends Page{
     private void inputMenu(String menuName){
     	this.input(By.xpath(this.menuInput_x), menuName);
     }
-    private void searchMenu(){
+    private void searchMenu() throws InterruptedException{
     	this.click(By.xpath(this.menuSearch_x));
 
     }
