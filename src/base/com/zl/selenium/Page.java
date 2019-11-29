@@ -1,5 +1,6 @@
 package base.com.zl.selenium;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
@@ -23,6 +24,7 @@ import com.sun.corba.se.spi.orbutil.fsm.Action;
 
 import base.com.zl.utils.DataUtil;
 import base.com.zl.utils.DateUtil;
+import test.web.WebInit;
 
 
 public class Page {
@@ -46,6 +48,15 @@ public class Page {
 		opWebDriver.get(this.webDriver, url);
 	}
 	
+/*	*//**
+	 * 截图
+	 *//*
+	public void screenShot(){
+		
+        screenpath = WebInit.testDir + mainCaseId+File.separator +"wrong_" + remark + ".png";
+        opWebDriver.screenShot(this.webDriver,screenpath);
+		
+	}*/
 
 	/**
 	 * 获取元素
@@ -244,7 +255,7 @@ public class Page {
         	webElement.click();
         	//this.jsclick(by);
         	this.hLightElement(webElement);
-        	Thread.sleep(1000);
+        	Thread.sleep(2000);
         	String eId=webElement.getAttribute("id");
         	eId=eId.replace("_span", "");
         	//  //*[@id="IS_BUSI_DATA_CARD_float"]/div[2]/div/div/ul/li
@@ -263,7 +274,7 @@ public class Page {
         	WebElement webElement = this.getelement(by);
         	webElement.click();
         	//this.jsclick(by);
-        	Thread.sleep(1000);
+        	Thread.sleep(2000);
         	String eId=webElement.getAttribute("id");
         	eId=eId.replace("_span", "");
         	//  //*[@id="IS_BUSI_DATA_CARD_float"]/div[2]/div/div/ul/li
@@ -283,7 +294,7 @@ public class Page {
 
         	//this.jsclick(by);
         	this.hLightElement(webElement);
-        	Thread.sleep(1000);
+        	Thread.sleep(2000);
         	String eId=webElement.getAttribute("id");
         	eId=eId.replace("_span", "");
         	//  //*[@id="IS_BUSI_DATA_CARD_float"]/div[2]/div/div/ul/li
@@ -554,12 +565,13 @@ public class Page {
 	 * @param by
 	 * @throws InterruptedException 
 	 */
-	public void click(By by)  {
+	public void click(By by) throws InterruptedException  {
 		
 		
-		WebElement element=this.webDriver.findElement(by);
+		WebElement element=this.webDriver.findElement(by);		
 		this.hLightElement(element);
 		element.click();
+		Thread.sleep(2000);
 	}
 
 	/**
@@ -574,6 +586,7 @@ public class Page {
 		this.hLightElement(element);
 		((JavascriptExecutor) this.webDriver).executeScript(
 				"arguments[0].click();", element);
+		Thread.sleep(2000);
 
 	}
 	
@@ -588,7 +601,7 @@ public class Page {
 		this.hLightElement(element);
         Actions actions = new Actions(this.webDriver);
         actions.moveToElement(element).click();
-	     
+		Thread.sleep(2000);
 	}
 	
 	/**
@@ -602,7 +615,7 @@ public class Page {
 		WebElement element=this.webDriver.findElement(by);
 		this.hLightElement(element);
         element.sendKeys(Keys.ENTER);
-
+		Thread.sleep(2000);
 	}	
 	
 	
@@ -623,7 +636,7 @@ public class Page {
          WebElement element=this.webDriver.findElement(by);
  		this.hLightElement(element);
             act.doubleClick(element).build().perform();
-
+    		Thread.sleep(2000);
          }
 	
 	
