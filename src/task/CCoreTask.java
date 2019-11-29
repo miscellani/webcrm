@@ -53,7 +53,8 @@ public class CCoreTask extends TimerTask{
 	            
 			   
 		    	HashMap<String, String> map = new HashMap<>();
-		    	map.put("filterType", "filter");
+		    	//map.put("filterType", "filter");
+		    	map.put("filterType", "all");
 
 				map.put("caseLevel", "1','A");
 
