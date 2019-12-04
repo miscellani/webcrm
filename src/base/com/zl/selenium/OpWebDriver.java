@@ -241,8 +241,8 @@ public class OpWebDriver {
 		        options.setExperimentalOption("prefs",chromePrefs);
 		        
                 //添加插件，暂时写死，后续改造
-				File plugPath = new File("C:\\extensions\\alwayscleardownloads.crx");
-				options.addExtensions(plugPath);
+				//File plugPath = new File("C:\\extensions\\alwayscleardownloads.crx");
+			//	options.addExtensions(plugPath);
 
 				
 		        DesiredCapabilities cap = DesiredCapabilities.chrome();
