@@ -49,6 +49,7 @@ public class CCoreTask extends TimerTask{
 
 			if(smoke.equals(shi)&&smokerun.equals("0")){
 		    	System.out.println("开始冒烟测试");
+		    	Log.info("-----定时冒烟开始-----");
 		    	configDbOperate.updateData("update web_config set para1='1' where paratype='runparam' and paracode='smoke'");
 	            
 			   
@@ -80,7 +81,7 @@ public class CCoreTask extends TimerTask{
 
 		    }
 
-
+	    	Log.info("-----定时冒烟时辰未到-----");
 		    
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
