@@ -96,7 +96,7 @@ public class TranslateLogic {
 		}
 
 		for (int i = 0; i < strings.length; i++) {
-			strings[i] = strings[i].replace("\n", "").replace("\r", "");
+			strings[i] = strings[i].replace("\n", "").replace("\r", "").replace(" ", "");
 
 			if( (strings[i]==null) || (strings[i].equals("")) || (strings[i].equals("null")) ){
 				continue;
