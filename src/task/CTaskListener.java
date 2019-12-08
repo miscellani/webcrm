@@ -30,6 +30,7 @@ public class CTaskListener implements ServletContextListener {
 
         int fen = Integer.parseInt(interval);
 		timer.schedule(new CCoreTask(sce.getServletContext()), new Date(), 60*fen*1000);
+
 	}
  
 	@Override
