@@ -274,10 +274,20 @@ public class WebInit {
 
 				// 更新控制表数据到最新，包括结束标识0开始时间等等
 				if (dbOperate.searchStrings("select stop from web_control").size() > 0) {
+					
+					//如果是全新执行
+					if(filterType.equals("all")){
+					//新增将当轮执行CASE转移到历史表
+					dbOperate.insertData(" insert into web_case_exehis select t1.controlid,t2.* from  web_control t1,web_case_current t2 ");
+					//新增更新历史执行数据路径
+					dbOperate.updateData("update web_control set currentdir= SUBSTR (currentdir,0,length(currentdir)-1)||'_his\\'");
 					dbOperate.insertData("insert into web_control_his select * from web_control");
+					}
 					String id = dbOperate.searchString("select web_control_sequence.nextval from dual");
 					dbOperate.updateData("update web_control t set controlid='"+id+"' ,stop=0,currentdir='" + testDir + "',startdate='"
 							+ startDate + "',enddate='' , finish=0");
+					
+					
 				} else {
 					dbOperate.insertData(
 							"insert into web_control values (web_control_sequence.nextval,'"+testDir+"','0','"+ startDate+ "','','','0')");
