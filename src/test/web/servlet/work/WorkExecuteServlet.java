@@ -83,9 +83,10 @@ public class WorkExecuteServlet extends HttpServlet {
 			ConfigDbOperate dbOperate = new ConfigDbOperate();
 			try {
 				dbOperate.updateData("update web_control t set stop='1',finish='1'");
-				dbOperate.delData("delete web_case_current ");
-				dbOperate.insertData("insert into web_case_current select * from web_case where result='已发布'");
-				dbOperate.updateData("update web_case_current set result='未执行'");
+				//删除掉
+				//dbOperate.delData("delete web_case_current ");
+				//dbOperate.insertData("insert into web_case_current select * from web_case where result='已发布'");
+				//dbOperate.updateData("update web_case_current set result='未执行'");
 
 			}  catch (Exception e) {
 				// TODO Auto-generated catch block
