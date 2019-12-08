@@ -46,10 +46,10 @@ public class CCoreTask extends TimerTask{
 			shi = shi.substring(8, 11);
             String smokerun = webConfigDao.getRunParam("smoke");
 	    	ConfigDbOperate configDbOperate = new ConfigDbOperate();
-
+            String nowtime= dateUtil.now();
 			if(smoke.equals(shi)&&smokerun.equals("0")){
 		    	System.out.println("开始冒烟测试");
-		    	Log.info("-----定时冒烟开始-----");
+		    	//Log.info("-----定时冒烟开始-----");
 		    	configDbOperate.updateData("update web_config set para1='1' where paratype='runparam' and paracode='smoke'");
 	            
 			   
@@ -81,7 +81,8 @@ public class CCoreTask extends TimerTask{
 
 		    }
 
-	    	Log.info("-----定时冒烟时辰未到-----");
+	    	//Log.info("-----定时冒烟时辰未到-----");
+	    	System.out.println("当前时间："+nowtime+"-----定时冒烟时辰未到-----");
 		    
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
