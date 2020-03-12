@@ -8,11 +8,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-
-import org.springframework.web.filter.ServletContextRequestLoggingFilter;
-
-import com.sun.org.apache.xml.internal.security.Init;
-
 import base.com.zl.log.Log;
 
 public class DataUtil {
@@ -47,8 +42,8 @@ public class DataUtil {
 		//dataUtil.stringToMap("ancas=12|abc=|nnn=9890");
 		  // if(1==2){
 			//String bdc="456";
-		String aaa= "			String idenNr=dbOp.searchString(select iden_nr from party.cb_identification  where iden_type_id = '1000007' and data_status = ";
-		System.out.println(dataUtil.patternText(aaa, "String (.*?)="));
+		String aaa= " select t.access_num from uaser.disns where t.access_num in ( select t.aadd  from  userdd.ssdds)";
+		System.out.println(dataUtil.patternText(aaa, "select (.*?)from"));
 		
 	}
 	public long strToLong(String str) {

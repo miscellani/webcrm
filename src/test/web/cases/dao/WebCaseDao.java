@@ -336,12 +336,16 @@ public class WebCaseDao{
 
 		}
 		
+		
+		
+		
 		String index = configDbOperate.searchString("select   web_case_sequence.nextval from dual");
 		caseInfo.setCaseId(Integer.parseInt(index));
 		
 		String menuCode=caseInfo.getMenuCode();
 		String element = caseInfo.getPageElement();
 		
+		//页面元素有值
 		if(  ((element!=null) &&(!element.equals("") )&&( !element.equals("null")))&&((menuCode!=null) &&(!menuCode.equals("") )&&( !menuCode.equals("null")))      ){
 			
 			
@@ -370,6 +374,17 @@ public class WebCaseDao{
 			
 			
 		}	
+		
+		// 如果菜单编码在元素表中存在
+		   //如果有值就更新一下
+		   //无值就不处理
+		//如果菜单编码在元素表中不存在
+		   //不管有没有值都插一条数据
+		
+		
+		
+		
+		
 		
 		
 		caseInfo.setPageElement("");

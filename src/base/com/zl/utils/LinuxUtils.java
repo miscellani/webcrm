@@ -5,14 +5,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-import ch.ethz.ssh2.Connection;
+/*import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
-import ch.ethz.ssh2.StreamGobbler;
+import ch.ethz.ssh2.StreamGobbler;*/
 
 
 public class LinuxUtils {
 	
-	public void linkLinux() throws IOException{
+	public void linkLinux() throws IOException{/*
 		
 		  
 
@@ -48,5 +48,5 @@ public class LinuxUtils {
 	            conn.close();
 	            }	           
 
-	}
+	*/}
 }

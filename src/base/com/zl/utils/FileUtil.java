@@ -3,29 +3,23 @@ package base.com.zl.utils;
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
-
-import javax.tools.JavaCompiler;
-import javax.tools.ToolProvider;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+//import org.apache.poi.xssf.usermodel.XSSFSheet;
+//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
-
-import jxl.Sheet;
-import jxl.Workbook;
-import jxl.read.biff.BiffException;
+//import jxl.Sheet;
+//import jxl.Workbook;
+//import jxl.read.biff.BiffException;
 
 public class FileUtil {
 
@@ -377,40 +371,40 @@ public class FileUtil {
 
 	
 	
-//***********************************excel处理
+/*//***********************************excel处理
 
-/**
+*//**
  * 获取xls格式文件的第N个sheet
  * @param xlsFilePath
  * @param index
  * @return
  * @throws BiffException
  * @throws IOException
- */
+ *//*
 	public Sheet getXlsSheet(String xlsFilePath,int index) throws BiffException, IOException{
 		Workbook allcasebook = Workbook.getWorkbook(new File(xlsFilePath));
 		return  allcasebook.getSheet(index);
 	}
-	/**
+	*//**
 	 * 获取xlsx格式文件的第N个sheet
 	 * @param xlsFilePath
 	 * @param index
 	 * @return
 	 * @throws FileNotFoundException
 	 * @throws IOException
-	 */
+	 *//*
 	public XSSFSheet getXlsxSheet(String xlsFilePath,int index) throws FileNotFoundException, IOException{
 		XSSFWorkbook wb = new XSSFWorkbook(new FileInputStream(new File(xlsFilePath)));
         return  wb.getSheetAt(index);	
         
 	}
-	/**
+	*//**
 	 * 获取xls格式表格的第t个 sheet
 	 * @param book
 	 * @param t
 	 * @return
 	 * @throws Exception
-	 */
+	 *//*
 	public  Sheet getExcel(Workbook book, int t) throws Exception {
 
 		Sheet sheet;
@@ -420,37 +414,36 @@ public class FileUtil {
 
 		return sheet;
 
-	}
+	}*/
 	
-	/**
+/*	*//**
 	 * 获取xlsx文件单元格的值
 	 * @param XSSFSheet
 	 * @param xid
 	 * @param yid
 	 * @return
-	 */	
+	 *//*	
 	public String getContentById(XSSFSheet sheet,int xid ,int yid){
 		
 		return sheet.getRow(xid).getCell(yid).toString();
 		
 	}
-	/**
+	*//**
 	 * 获取xls文件单元格的值
 	 * @param sheet
 	 * @param xid
 	 * @param yid
 	 * @return
-	 */
+	 *//*
 	public String getContentById(Sheet sheet, int xid, int yid) {
 
 		return sheet.getCell(xid, yid).getContents();
 
-	}
+	}*/
 
 	public HashMap getEnvironmentConfig(String name)
 			throws ParserConfigurationException, SAXException, IOException {
 		String path = System.getProperty("catalina.home");
-		String aaa = System.getProperty("java.class.path");
 		if(path!=null){
 			 path = path+File.separator+"webapps"+File.separator+"webcrm"+File.separator+"WEB-INF"+File.separator+"classes"+File.separator+"test"+File.separator+"config"+File.separator+"envConfig.xml";
 

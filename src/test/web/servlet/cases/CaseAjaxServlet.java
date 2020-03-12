@@ -189,7 +189,7 @@ public class CaseAjaxServlet extends HttpServlet {
         
         System.out.println(keyWord);
        // System.out.println("select paracode   ||' 说明:'||remark||' 入参:'||para2||' 出参:'||para3 from web_Config where paracode like'%"+keyWord+"%' and  paratype in ('"+paratype+"')");
-        
+  
         String json = JSON.toJSONString(list);
         //防止乱码
         String encodeJSON = URLEncoder.encode(json,"UTF-8");

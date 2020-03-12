@@ -1,9 +1,5 @@
 package test.init;
 
-import java.util.ArrayList;
-
-import org.omg.PortableServer.ServantActivator;
-import org.openqa.selenium.WebElement;
 
 import base.com.zl.db.ConfigDbOperate;
 import base.com.zl.utils.DataUtil;

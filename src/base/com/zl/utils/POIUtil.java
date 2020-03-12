@@ -1,5 +1,8 @@
 package base.com.zl.utils;
-import org.apache.poi.hssf.usermodel.HSSFCell;
+
+import java.io.IOException;
+
+/*import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFDataFormat;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -17,7 +20,7 @@ import java.util.List;
 import jxl.Sheet;
 import jxl.Workbook;
 import jxl.read.biff.BiffException;
-
+*/
 /**
  * Created by wdnnccey on 17/2/27.
  * <p>
@@ -26,7 +29,7 @@ import jxl.read.biff.BiffException;
  *
  */
 public class POIUtil {
-	 private static List<File> test(String fileDir) {  
+	/* private static List<File> test(String fileDir) {  
 	        List<File> fileList = new ArrayList<File>();  
 	        File file = new File(fileDir);  
 	        File[] files = file.listFiles();// 获取目录下的所有文件或文件夹  
@@ -45,9 +48,12 @@ public class POIUtil {
 	        
 	        return fileList;
 
-	    }  
+	    }  */
 	 
-    public static void main(String[] args) throws IOException {
+	 /*public static void main(String[] args) throws IOException {
+    	
+    }
+    	
     	
     	  
     	List<File> lists= test("C://zll//"); 
@@ -104,5 +110,5 @@ public class POIUtil {
     
 
         
-    }
+    }*/
 }

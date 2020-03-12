@@ -1,18 +1,16 @@
 package base.com.zl.log;
 
+import base.com.zl.utils.DataUtil;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.IOException;
 import java.io.PipedReader;
-import java.util.Random;
+import java.io.PrintStream;
+import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
-
+import javax.websocket.RemoteEndpoint.Basic;
 import javax.websocket.Session;
-
 import test.web.WebInit;
 
-import base.com.zl.utils.DataUtil;
-import base.com.zl.utils.FileUtil;
 
 /**
  * 新线程
@@ -28,80 +26,6 @@ public class LogThread extends Thread {
 
 	}
 
-	/*
-	 * @Override public void run() {
-	 * 
-	 * String line = null; FileUtil fileUtil = new FileUtil();
-	 * 
-	 * while(true){
-	 * 
-	 * 
-	 * 
-	 * try { line =fileUtil.getFileContent(Init.logPath).toString(); line = new
-	 * String(line.getBytes("8859_1"),"gbk"); String[] lines = line.split("\n");
-	 * 
-	 * int num =lines.length;
-	 * 
-	 * 
-	 * 
-	 * if(num<4){ for(int i=0;i<num;i++){
-	 * session.getBasicRemote().sendText(lines[i] + "<br>"); Thread.sleep(1000);
-	 * 
-	 * } }else{
-	 * 
-	 * session.getBasicRemote().sendText(lines[0] + "<br>"); Thread.sleep(1000);
-	 * session.getBasicRemote().sendText(lines[1] + "<br>"); Thread.sleep(1000);
-	 * for(int i=3;i<num;i++){ session.getBasicRemote().sendText(lines[i] +
-	 * "<br>");
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * }
-	 * 
-	 * 
-	 * 
-	 * if(line.contains("测试结束")){ break; }
-	 * 
-	 * } catch (Exception e1) { // TODO Auto-generated catch block
-	 * e1.printStackTrace(); String meString =new DataUtil().getTrace(e1);
-	 * if(meString.contains(" closed session")){ break; }
-	 * 
-	 * 
-	 * }
-	 * 
-	 * }
-	 * 
-	 * 
-	 * }
-	 */
-
-	/*
-	 * @Override public void run() { CaseInfoExecuteDao caseInfoExecuteDao = new
-	 * CaseInfoExecuteDao();
-	 * 
-	 * String line =""; while(true){ try { line=Init.logQueue.poll() ;
-	 * if(line==null){ if(caseInfoExecuteDao.getRunningStatus().equals("1")){
-	 * break; } Thread.sleep(1000);
-	 * 
-	 * continue; } } catch (Exception e) { // TODO Auto-generated catch block
-	 * System.out.println("日志队列获取数据异常"); continue; }
-	 * 
-	 * 
-	 * 
-	 * if(line.contains("测试结束")){ break; } try {
-	 * session.getBasicRemote().sendText(line+ "<br>"); } catch (IOException e)
-	 * { // TODO Auto-generated catch block String meString =new
-	 * DataUtil().getTrace(e); if(meString.contains(" closed session")){ break;
-	 * }
-	 * 
-	 * }
-	 * 
-	 * }
-	 * 
-	 * }
-	 */
 
 	@Override
 	public void run() {

@@ -11,8 +11,8 @@ public class DbCheck  extends DbOperate{
 	//***************************校验
 	
 
-	
-		/**
+/*	
+		*//**
 		 * 直接设置数据库校验结果
 		 * 
 		 * @param result
@@ -20,9 +20,9 @@ public class DbCheck  extends DbOperate{
 		 * @param searchremarks
 		 * @throws Exception 
 		 * @throws IOException
-		 */
+		 *//*
 		public void dBcheck(boolean result, String checkMessage) throws Exception
-				{/*
+				{
 
 			String path = null;
 				
@@ -80,7 +80,7 @@ public class DbCheck  extends DbOperate{
 
 			 return result;
 
-		*/}
+		}*/
 		
 
 		

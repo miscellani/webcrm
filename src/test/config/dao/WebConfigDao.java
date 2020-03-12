@@ -13,7 +13,7 @@ import base.com.zl.db.DbOperate;
 import base.com.zl.log.Log;
 import base.com.zl.utils.DataUtil;
 import base.com.zl.utils.DateUtil;
-import oracle.net.aso.n;
+
 
 public class WebConfigDao {
 	
@@ -589,7 +589,7 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 		
 		
 		/**  
-		 * 获取操作号码1
+		 * 获取操作号码（执行查询）
 		 * @param sqlKey
 		 * @param linkValue
 		 * @return
@@ -604,15 +604,75 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 	        String sql="";
 	        sql= this.getConfigParam("numberkey", paraCode, "1").get(0);
 	        HashMap<String,String> resultMap = new HashMap<String,String>();
-
-	        //过滤分号
+	        //删除分号
 	        sql  = sql.replace(";", "");
+        	DataUtil dataUtil = new DataUtil();
+	        
+	        
+	        
 	        
 	        //没有变量
-	       // if((linkValue==null)|| (linkValue.equals("null"))){
+	        if(sqlKeys.length==1){
+		      	 Log.info("无入参numberkey:"+sql);
+	        }else{
+	        //有变量
+	          String sqlParam =sqlKey.replace(paraCode+",", "");
+	          if(sqlParam.contains(",")){
+
+	        	String[] paramValues =sqlParam.split(",");
+
+	        	for(int i=0;i<paramValues.length;i++){
+	        		String pValue = dataUtil.patternText(sql, "(\\$\\{[^\\$]*\\})");
+	        		sql=sql.replace(pValue, paramValues[i]);
+	        	}
+	      	 System.out.println(sql);
+	      	 Log.info("有入参numberkey:"+sql);
+	          }
+	      	
+	        
+	        }
+	        
+
+	        
+	        
+	        //关联已用号码表过滤
+	        String  outc =  dataUtil.patternText(sql, "select (.*?)from");
+	        outc=outc.trim();
+	        sql=sql +" and "+outc+" not in (select test_Data from web_test_data)";
+	        sql= " select *  from  ( "+sql +"  ) where rownum< 100 order by dbms_random.value";
+
+	      	   try{
+		        	resultMap =dbOperate.searchMaps(sql).get(0);
+
+	      	   }catch (Exception e) {
+				// TODO: handle exception
+	      		 resultMap.put("error", paraCode);
+			}	        	
+	    		for(String mapValue : resultMap.values()){
+
+	        	s=mapValue+","+s;
+	    		}
+	        	return s.substring(0,s.length()-1);
+	        	
+	        	
+	        	
+	        
+	        
+	        
+  
+	        
+	        
+/*	        
+	        //没有变量
+
 	        if(sqlKeys.length==1){
 	      	   sql= " select *  from  ( "+sql +"  ) where rownum< 100 order by dbms_random.value";
 		      	 Log.info("无入参numberkey:"+sql);
+		      	 
+		      	 
+		      	 
+		      	 
+		      	 
 	      	   try{
 		        	resultMap =dbOperate.searchMaps(sql).get(0);
 
@@ -646,19 +706,15 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 	      	   }catch (Exception e) {
 				// TODO: handle exception
 	      		 resultMap.put("error", paraCode);
-			}
-
-	        	
-	        	
-	        	
-	        	
+			}	        	
 	    		for(String mapValue : resultMap.values()){
 
 	        	s=mapValue+","+s;
 	    		}
-	        	
-	    	
 	        	return s.substring(0,s.length()-1);
+	        	
+	        	
+	        	
 	        }
 	        
 	        //只有一个变量
@@ -674,10 +730,7 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 		      	 
 
 		      	 try {
-	             resultMap =dbOperate.searchMaps(sql).get(0);
-	             
-	             
-	             
+	             resultMap =dbOperate.searchMaps(sql).get(0);	             	            	             
 		      	 Log.info("小丕权返回结果:"+resultMap.toString());
 
 			     		for(String mapValue : resultMap.values()){
@@ -688,12 +741,12 @@ public HashMap getConfigParams(String paraType,String paraCode,String state)thro
 					// TODO: handle exception
 			      	 DataUtil dataUtil = new DataUtil();
 			      	 
-			      	 Log.info("小丕权报错了"+dataUtil.getTrace(e));
+			      	 Log.info("报错了"+dataUtil.getTrace(e));
 
 				}
 
 		      	 Log.info("最终返回结果:"+s.substring(0,s.length()-1));
-				return s.substring(0,s.length()-1);
+				return s.substring(0,s.length()-1);*/
 			
 
 

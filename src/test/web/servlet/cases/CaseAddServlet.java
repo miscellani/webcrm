@@ -46,9 +46,9 @@ public class CaseAddServlet extends HttpServlet {
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		request.getRequestDispatcher("/jsp/caseManage/case_add.jsp").forward(request, response);
+		//  request.getRequestDispatcher("/jsp/caseManage/case_add.jsp").forward(request, response);
 
-		
+		request.getRequestDispatcher("/jsp/caseManage/testpop.jsp").forward(request, response);
 	}
 
 	/**

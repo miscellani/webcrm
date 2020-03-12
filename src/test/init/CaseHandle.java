@@ -4,30 +4,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
-
 import org.openqa.selenium.WebDriver;
-
-import com.sun.jna.platform.unix.X11.XClientMessageEvent.Data;
-
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-
 import javax.tools.JavaCompiler.CompilationTask;
-
 import test.config.dao.WebConfigDao;
 import test.web.WebInit;
 import test.web.cases.bean.WebCaseBean;
-import test.web.cases.com.LoginPage;
-import test.web.cases.com.MMainPage;
-import test.web.cases.com.WorkDeskPage;
+
 import test.web.cases.dao.WebCaseDao;
 import test.web.cases.dao.WebCaseExecuteDao;
 import base.com.zl.db.ConfigDbOperate;
+import base.com.zl.db.DbOperate;
 import base.com.zl.log.Log;
 import base.com.zl.selenium.OpWebDriver;
-import base.com.zl.selenium.Page;
+
 import base.com.zl.utils.DataUtil;
 import base.com.zl.utils.DateUtil;
 import base.com.zl.utils.FileUtil;
@@ -85,6 +78,29 @@ public class CaseHandle {
 	     return	resultMap;
 
 	}
+	
+	
+	
+	/**
+	 * 获取可以校验的CASE数据
+	 * @return
+	 */
+	public ArrayList<String> getCheckCases(){
+		
+		//--新增号码使用表 caseid  number  使用时间
+		//--在查询号码后插入 
+		//在最终CASE执行成功后，更新使用时间
+		//号码进入菜单失败重新登录时怎么处理？可能1个CASE关联多个号码
+		//在执行失败或报错时通过CASEID将号码挪出
+
+		//在查询可校验数据是关联号码使用表 ，时间大于1分钟，CASE执行状态为成功的数据，即为可校验的数据列
+       
+		//校验之后通过CASEID将号码从号码中挪出
+		
+		return null;
+		
+	}
+	
 	
 	public WebDriver excuteCases(WebDriver webDriver,String ip,String name,String caseId) throws Exception {
 
@@ -152,125 +168,6 @@ public class CaseHandle {
 			stringBuffer.append(module+ "_" + businessMenu + "_"+ caseId + "操作异常\n");
 			stringBuffer.append(dataUtil.getTrace(e)+"\n");
 
-
-			// TODO: handle exception
-           // Exception e = new Exception();
-           // e= (Exception)reTurnMap.get("exception");
-            //DataUtil dataUtil = new DataUtil();
-            
-/*            if(e!=null){ 
-			String causename = "";
-			String causemessage = "";
-			try {
-				
-				causename = e.getCause().getClass().getSimpleName();
-				causemessage = e.getCause().getMessage();
-
-			} catch (Exception e2) {
-				// TODO: handle exception
-				e2.printStackTrace();
-				stringBuffer.append("CASE执行报错："+"\n");
-				stringBuffer.append(dataUtil.getTrace(e2)+"\n");
-			}*/
-			
-			
-			
-			
-			//cases.com.LoginPage loginPage = new cases.com.LoginPage(webDriver);            
-			//WorkDeskPage workDeskPage = new WorkDeskPage(webDriver);
-            
-            
-			/* 
-
-			if (causename.equals("NoSuchWindowException")) {
-
-				if (causemessage.indexOf("Unable to get browser") > -1) {
-
-					 webDriver = opWebDriver.openRBrower(ip,name);
-					 loginPage = new cases.com.LoginPage(webDriver);            
-
-					try {
-						
-			             //workDeskPage = new WorkDeskPage(webDriver);
-						loginPage.login(WebInit.pointLogin,WebInit.opId, WebInit.opPass);
-						//workDeskPage.gotoBusiness(Init.platform);
-					} catch (Exception e2) {
-						// TODO: handle exception
-						e2.printStackTrace();
-
-						stringBuffer.append("继续报错：浏览器报错"+"\n");
-						stringBuffer.append(dataUtil.getTrace(e2)+"\n");
-					}
-
-				}
-
-			} else if (causename.equals("UnhandledAlertException")) {
-				if (causemessage.indexOf("unexpected alert open") > -1) {
-					Page page = new Page(webDriver);
-					page.confirmjspop();
-
-				}
-
-			} else {
-
-				
-				
-				//暂时不处理退出登录的情况
-				
-				String content = opWebDriver.getTitle(webDriver);
-                 //浏览器在但是不在网站
-				if (!(content.equals(workDeskPage.titleName))) {
-					//opWebDriver.get(webDriver,WebInit.mWebUrl);
-					loginPage.locateWeb();
-					try {
-
-						loginPage.login(WebInit.opId, WebInit.opPass);
-						//workDeskPage.gotoBusiness(WebInit.platform);
-
-					} catch (Exception e2) {
-						// TODO: handle exception
-						e2.printStackTrace();
-						//Log.saveLog(caseId, this.getTrace(e2));	
-						stringBuffer.append("继续报错：可能应用页面错误"+"\n");
-						stringBuffer.append(dataUtil.getTrace(e2)+"\n");
-					}
-
-				} else {
-                  //在登录页
-					 
-					if (content.contains(opWebDriver.getTitle(webDriver))) {
-
-						try {
-
-							loginPage.login(WebInit.opId,
-									WebInit.opPass);
-
-							//workDeskPage.gotoBusiness(Init.platform);
-
-						} catch (Exception e2) {
-							// TODO: handle exception
-							e2.printStackTrace();
-							stringBuffer.append("继续报错：可能登陆报错"+"\n");
-							stringBuffer.append(dataUtil.getTrace(e2)+"\n");
-						}
-                     //在营业厅页
-
-					} else if (content.equals(pMainPage.titleName)) {
-
-						MMainPage mainPage = new MMainPage(webDriver);
-						mainPage.switchDeafults();
-
-
-					}
-				}
-
-			}*/
-
-			
-
-
-
-
             }
 		//}
 
@@ -288,7 +185,7 @@ public class CaseHandle {
 		webCaseBean.setRemark(stringBuffer.toString());
 
 		ArrayList<Integer> fee = dateUtil.getFeeTime(startTime, endTime);
-		webCaseBean.setFee(fee.get(2)*60);
+		webCaseBean.setFee(fee.get(2)*60+fee.get(3));
 		webCaseExecuteDao.updateExecuteCase(webCaseBean);
 		
 		
@@ -296,6 +193,8 @@ public class CaseHandle {
 	}
 
 
+
+	
 	public void checkCases(String caseId) throws Exception {
 
 		WebCaseExecuteDao webCaseExecuteDao = new WebCaseExecuteDao();
@@ -374,7 +273,10 @@ public class CaseHandle {
 
         webCaseBean.setFee( fee.get(2)*60);
 		webCaseExecuteDao.updateExecuteCase(webCaseBean);
-		
+        //将校验后的数据移除测试数据表
+		DbOperate dbOperate = new DbOperate();
+		dbOperate
+		.updateData("delete web_test_data t where case_id='"+caseId+"'");
 	
 	}
 	
@@ -477,14 +379,23 @@ public class CaseHandle {
 		ConfigDbOperate configDbOperate = new ConfigDbOperate();
 
 		if (filterType.equals("all")) {
+			
+			
+			//新增将当轮执行CASE转移到历史表
+			configDbOperate.insertData(" insert into web_case_exehis select t1.controlid,t2.* from  web_control t1,web_case_current t2 ");
+			
+			
 			configDbOperate.delData("delete web_case_current t");
 			configDbOperate
-					.insertData("insert into web_case_current select t.* from web_case t where result='已发布' and caselevel <>'debug'");
+					.insertData("insert into web_case_current select t.* from web_case t where result='已发布' ");
 			configDbOperate
 			.updateData("update web_case_current set result='未执行'");
 			
 			list = configDbOperate
 					.searchStrings("Select caseid from web_case_current where caselevel <>'debug' order by caseid asc");
+			
+			
+			
 			
 			return list;
 		} else if (filterType.equals("continueX")) {
@@ -591,83 +502,14 @@ public class CaseHandle {
 
 		
 		stringBuffer.append(translateLogic.createHead(module));
-/*		stringBuffer.append("package cases." + module + ";\n\n");	
-		stringBuffer.append("import base.com.zl.com.ComOperate;\n");		
-		stringBuffer.append("import base.com.zl.utils.DataUtil;\n");		
-		stringBuffer.append("import java.util.ArrayList;\n");
-		stringBuffer.append("import java.util.HashMap;\n");
-		stringBuffer.append("import org.openqa.selenium.WebElement;\n");
-		stringBuffer.append("import org.openqa.selenium.By;\n");
-		stringBuffer.append("import org.openqa.selenium.WebDriver;\n");
-		stringBuffer.append("import base.com.zl.selenium.Page;\n");
-		stringBuffer.append("import base.com.zl.db.DbOperate;\n");
-		stringBuffer.append("import base.com.zl.db.ConfigDbOperate;\n");		
-		stringBuffer.append("import java.util.Map;\n");
-		stringBuffer.append("import base.com.zl.check.DbCheck;\n");
-		stringBuffer.append("import base.com.zl.check.PageCheck;\n");		
-		stringBuffer.append("import base.com.zl.selenium.OpWebDriver;\n");
-		stringBuffer.append("import java.io.File;\n\n");*/
-		///结束	
+
 		
 		stringBuffer.append("public class " + menuName + " {\n");		
 		// 先输入页面元素定义,构造方式
 		String pageElement =webCaseBean.getPageElement();	
 		
 		stringBuffer.append(translateLogic.createVar(pageElement, menuName));
-
-		/*String[] strings= new String[0];
-		if(pageElement!=null){
-			strings= pageElement.split("\\;");
-
-		}
-
-		for (int i = 0; i < strings.length; i++) {
-			strings[i] = strings[i].replace("\n", "").replace("\r", "");
-
-			if( (strings[i]==null) || (strings[i].equals("")) || (strings[i].equals("null")) ){
-				continue;
-			}
-			
-			if (strings[i].startsWith("//")) {
-				stringBuffer.append(strings[i] + "\n");
-			} else {
-				String[] stringss = strings[i].split("=");
-				stringBuffer.append("	private final String " + stringss[0].replace("\n", "").replace("\r", ""));
-				System.out.println(stringss[0]);
-				String a = stringss[1];
-				if (stringss.length > 2) {
-					a = a + "=" + stringss[2];
-				}
-				a = a.replace("\"", "\\\"");
-				stringBuffer.append(" = \"" + a + "\";\n");
-				// + "=\"" + stringss[1].replace("\"", "\\\"")
-				// + "\";\n");
-
-			}
-			
-		}
-		stringBuffer.append("	public int cycleId=0;\n" );
-		stringBuffer.append("	public String caseId;\n" );
-		stringBuffer.append("	public String testDir;\n" );
-		stringBuffer.append("	public WebDriver webDriver;\n");
-		stringBuffer.append("	public "+menuName+"(){}\n");
-		stringBuffer.append("	public "+menuName+"(WebDriver webDriver,String caseId,String testDir){\n");
-		stringBuffer.append("	this.webDriver = webDriver;\n");
-		stringBuffer.append("	this.caseId = caseId;\n");
-		stringBuffer.append("	this.testDir = testDir;\n");
-
-		
-		stringBuffer.append("	}\n");
-		stringBuffer.append("\n");
-	*/
-		
-
-		
-		
-		
-		
-		
-		
+	
 
 		// 循环生成每个CASE的操作方法和校验方法
 		for (int a = 0; a < list.size(); a++) {
@@ -737,16 +579,6 @@ public class CaseHandle {
 				opStringBufferTemp
 				.append("			String saveData = \"\";\n");	
 
-/*			    if(!(paramNames==null)){
-			    	for(int k=0;k<paramNames.length;k++){
-			    		
-						opStringBufferTemp.append("			saveData = saveData +\""+paramNames[k]+"=\"+"+paramNames[k]+"+\"|\";\n");	
-
-			    	}
-
-			    }*/
-				
-				
 				
 			opStringBufferTemp
 			.append("			OpWebDriver opWebDriver = new OpWebDriver();\n");			
@@ -777,11 +609,7 @@ public class CaseHandle {
 			opStringBufferTemp
 			.append("			resultMap.put(\"saveData\", saveData);\n");	
 			
-			
-			
-
-				
-			
+	
 			
 			opStringBufferTemp
 			.append("			try{\n");	
@@ -810,14 +638,6 @@ public class CaseHandle {
 
 
 
-
-
-
-				//String[] opContentss = opSteps[j].split("\n");
-
-
-
-			
 
 
 

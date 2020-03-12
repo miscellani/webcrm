@@ -71,7 +71,11 @@
   </servlet>
 
 
-	
+  <servlet>
+    <servlet-name>SearchPopServlet</servlet-name>
+    <servlet-class>test.web.servlet.cases.SearchPopServlet</servlet-class>
+  </servlet>	
+  
   <servlet>
     <servlet-name>CaseAjaxServlet</servlet-name>
     <servlet-class>test.web.servlet.cases.CaseAjaxServlet</servlet-class>
@@ -238,7 +242,11 @@
   </servlet>
  
 
-
+  <servlet-mapping>
+    <servlet-name>SearchPopServlet</servlet-name>
+    <url-pattern>/servlet/SearchPopServlet</url-pattern>
+    </servlet-mapping>  
+    
   <servlet-mapping>
     <servlet-name>CaseReleaseServlet</servlet-name>
     <url-pattern>/servlet/CaseReleaseServlet</url-pattern>

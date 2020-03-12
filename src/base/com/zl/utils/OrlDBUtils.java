@@ -12,11 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
-
 import test.web.WebInit;
-
-import jxl.Sheet;
-import jxl.Workbook;
 
 public class OrlDBUtils {
 
@@ -430,6 +426,7 @@ public class OrlDBUtils {
 
 
 	protected HashMap<String, String> saveDataB(String url) throws Exception {
+		return null;/*
 		String sqlb = null;
 		HashMap<String, String> rmessage = new HashMap<String, String>();
 		rmessage.put("message", "导入成功!!");
@@ -465,6 +462,6 @@ public class OrlDBUtils {
 			stmtp.close();
 			return rmessage;
 		}
-	}
+	*/}
 
 }

@@ -1,30 +1,18 @@
 package base.com.zl.selenium;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
-
-import org.apache.poi.hssf.record.PageBreakRecord.Break;
 import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import com.gargoylesoftware.htmlunit.javascript.host.media.webkitMediaStream;
-import com.sun.corba.se.impl.oa.poa.ActiveObjectMap.Key;
-import com.sun.corba.se.spi.orbutil.fsm.Action;
-
-import base.com.zl.utils.DataUtil;
 import base.com.zl.utils.DateUtil;
-import test.web.WebInit;
 
 
 public class Page {

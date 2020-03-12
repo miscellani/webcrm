@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import base.com.zl.check.PageCheck;
+import base.com.zl.db.DbOperate;
 import base.com.zl.log.Log;
 import base.com.zl.selenium.OpWebDriver;
 import base.com.zl.selenium.Page;
@@ -675,6 +676,14 @@ public class ComOperate {
 		
 		WebConfigDao webConfigDao =new WebConfigDao();
 		accessNum= webConfigDao.getNumberByKey(key);
+		
+		//新增将测试数据放入临时表逻辑
+		DbOperate dbOperate = new DbOperate();
+		String caseid="1";
+		String testdata="18665717801";
+		dbOperate.insertData("insert into WEB_TEST_DATA (CASE_ID, TEST_DATA, DONE_DATE) values ("+caseid+", '"+testdata+"', sysdate) ");
+		
+		
 		return accessNum;
 	} 
     
