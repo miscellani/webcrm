@@ -2,30 +2,30 @@
 <config>	
   <!--广西现场联调环境--> 
   <Version name="gxlt">   
-    <pWebUrl>http://wtlt.cmcc.gx:60056/</pWebUrl> 
+    <pWebUrl>http://gxlt.ssga.com:60056/</pWebUrl> 
     <pointLogin>1</pointLogin>
-    <soaUrl>http://10.3.3.188:50001/CRMService</soaUrl>   
+    <soaUrl>http://gxlt.ssga.com:50001/CRMService</soaUrl>   
     <!-- 连的广办广西数据库 -->
-    <dbUrl>jdbc:oracle:thin:@10.3.3.194:1521:gxngcrm</dbUrl>
-    <dbUser>base:base#123|so1:so1#123|res:res#123|sec:sec#123|party:party#123|product:product#123|ams1:ams1#123|sf:sf#123</dbUser>
+    <dbUrl>jdbc:oracle:thin:@gxlt.ssga.com:1521:gxngcrm</dbUrl>
+    <dbUser>base:v922$#j9|so1:so1flobby|res:renautsm1th|sec:secN0lty</dbUser>
     <region>771</region>
-    <orgId>71001001</orgId>
-    <opId>95550088</opId>
-    <opPass>password1</opPass>
+    <orgId>22103091</orgId>
+    <opId>242857</opId>
+    <opPass>x9c5J5p#!</opPass>
   </Version>
 
    <!--广办广西测试环境--> 
   <Version name="gbgx">   
-    <pWebUrl>http://10.3.3.186:10111/</pWebUrl> 
-    <mWebUrl>http://10.3.3.186:13111/</mWebUrl> 
+    <pWebUrl>http://gbgx.ssga.com:10111/</pWebUrl> 
+    <mWebUrl>http://gbgx.ssga.com:13111/</mWebUrl> 
     <pointLogin>0</pointLogin>
-    <soaUrl>http://10.3.3.186:50001/CRMService</soaUrl>   
-    <dbUrl>jdbc:oracle:thin:@10.3.3.194:1521:gxngcrm</dbUrl>
-    <dbUser>aiqry:aiqry|base:base#123|so1:so1#123|res:res#123|sec:sec#123|party:party#123|product:product#123|ams1:ams1#123</dbUser>
+    <soaUrl>http://gbgx.ssga.com:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@gbgx.ssga.com:1521:gxngcrm</dbUrl>
+    <dbUser>base:v922$#j9|so1:so1flobby|res:renautsm1th|sec:secN0lty</dbUser>
     <region>771</region>
-    <orgId>71001001</orgId>
-    <opId>96660067</opId>
-    <opPass>password1</opPass>
+    <orgId>22103091</orgId>
+    <opId>242857</opId>
+    <opPass>x9c5J5p#!</opPass>
   </Version>
   
 
@@ -34,58 +34,58 @@
 
   <!--西藏现场测试环境--> 
   <Version name="xzxc">   
-    <pWebUrl>http://10.3.3.182:10111/</pWebUrl> 
-    <mWebUrl>http://10.3.3.182:14111/</mWebUrl> 
+    <pWebUrl>http://xzxc.ssga.com:10111/</pWebUrl> 
+    <mWebUrl>http://xzxc.ssga.com:14111/</mWebUrl> 
     <pointLogin>0</pointLogin>
-    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
-    <dbUrl>jdbc:oracle:thin:@172.16.9.28:1522:ng3cs</dbUrl>
+    <soaUrl>http://xzxc.ssga.com:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@xzxc.ssga.com:1522:ng3cs</dbUrl>
     <dbUser>bassi:P9km_6aV</dbUser>
     <maxPoolSize>15</maxPoolSize>
     <region>891</region>
-    <orgId>71011620</orgId>
-    <opId>96660010</opId>
-    <opPass>abc123</opPass>
+    <orgId>22103091</orgId>
+    <opId>242857</opId>
+    <opPass>x9c5J5p#!</opPass>
   </Version>
   
   
   <!--广办西藏测试环境--> 
   <Version name="gbxz">   
-    <pWebUrl>http://10.3.3.214:8211/crmweb/?service=page/Login</pWebUrl> 
-    <mWebUrl>http://10.3.3.214:8080/ngboss/</mWebUrl> 
+    <pWebUrl>http://gbxz.ssga.com:8211/crmweb/?service=page/Login</pWebUrl> 
+    <mWebUrl>http://boss.ssga.com:8080/ngboss/</mWebUrl> 
     <pointLogin>1</pointLogin>
-    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
-    <dbUrl>jdbc:oracle:thin:@10.3.3.237:1522:xzcrm</dbUrl>
-    <dbUser>bassi:gzxzcrm#1213</dbUser>
+    <soaUrl>http://gbxz.ssga.com:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@gbxz.ssga.com:1522:xzcrm</dbUrl>
+    <dbUser>base:v922$#j9|so1:so1flobby|res:renautsm1th|sec:secN0lty</dbUser>
     <maxPoolSize>15</maxPoolSize>
     <region>891</region>
-    <orgId>10000001</orgId>
-    <opId>91110011</opId>
-    <opPass>123456</opPass>
+    <orgId>22103091</orgId>
+    <opId>242857</opId>
+    <opPass>x9c5J5p#!</opPass>
   </Version>
   
 
   <!--香港平台数据配置(UAT环境)--> 
     <Version name="config--">    
-    <dbUrl>jdbc:oracle:thin:@172.16.9.164:1522:hkcrmuat</dbUrl>
-    <dbUser>aitest:aitest_T123</dbUser>
+    <dbUrl>jdbc:oracle:thin:@hkcr.ssga.com:1522:hkcrmuat</dbUrl>
+    <dbUser>fmayshon:Jio8%glq</dbUser>
     <maxPoolSize>15</maxPoolSize> 
     <region>852</region>
-    <mail>zhanglin@asiainfo.com|zhanglin|1984916qqq@</mail>
+    <mail>fahr_mayshon@ssga.com|fmayshon|Jio8%glq</mail>
   </Version>
   <!--香港UAT测试环境--> 
    <Version name="run--"> 
      <env>UAT环境</env>   
-    <pWebUrl>http://172.16.9.192:8080/web-ngboss</pWebUrl> 
-    <mWebUrl>http://172.16.9.192:8080/web-ngboss</mWebUrl> 
+    <pWebUrl>http://boss.ssga.com:8080/web-ngboss</pWebUrl> 
+    <mWebUrl>http://boss.ssga.com:8080/web-ngboss</mWebUrl> 
     <pointLogin>1</pointLogin>
-    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
-    <dbUrl>jdbc:oracle:thin:@172.16.9.164:1522:hkcrmuat</dbUrl>
-    <dbUser>aitest:aitest_T123</dbUser>
+    <soaUrl>http://boss.ssga.com:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@gbxz.ssga.com:1522:hkcrmuat</dbUrl>
+    <dbUser>fmayshon:Jio8%glq</dbUser>
     <maxPoolSize>15</maxPoolSize> 
     <region>852</region>
-    <orgId>21000100</orgId>
-    <opId>P91110001</opId>
-    <opPass>HKTest_#2019a</opPass>
+    <orgId>22103091</orgId>
+    <opId>242857</opId>
+    <opPass>x9c5J5p#!</opPass>
   </Version> 
 
 
@@ -93,27 +93,27 @@
 
   <!--基线平台数据配置(测试环境)--> 
   <Version name="config">    
-    <dbUrl>jdbc:oracle:thin:@172.17.30.24:1521:basecrmdev</dbUrl>
-    <dbUser>aitest:Pass!123</dbUser>
+    <dbUrl>jdbc:oracle:thin:@crm.ssga.com:1521:basecrmdev</dbUrl>
+    <dbUser>fmayshon:Jio8%glq</dbUser>
     <maxPoolSize>15</maxPoolSize> 
     <region>897</region>
-    <mail>zhanglin@asiainfo.com|zhanglin|19849161qaz%</mail>
+    <mail>fahr_mayshon@ssga.com|fmayshon|Jio8%glq</mail>
   </Version>
 
   <!--基线现场订单中心测试环境http://172.17.30.16:8070/web-portal/portal--> 
   <Version name="run">   
     <env>测试环境</env> 
     <prov>基线版本</prov>
-    <pWebUrl>http://172.17.30.16:8070/web-portal/portal</pWebUrl> 
-    <mWebUrl>http://172.17.30.16:8070/web-portal/portal</mWebUrl> 
+    <pWebUrl>http://crm.ssga.com:8070/web-portal/portal</pWebUrl> 
+    <mWebUrl>http://crm.ssga.com:8070/web-portal/portal</mWebUrl> 
     <pointLogin>0</pointLogin>
-    <soaUrl>http://10.3.3.182:50001/CRMService</soaUrl>   
-    <dbUrl>jdbc:oracle:thin:@172.17.30.27:1521:basecrmtest</dbUrl>
-    <dbUser>aitest:Pass!123</dbUser>
+    <soaUrl>http://crm.ssga.com:50001/CRMService</soaUrl>   
+    <dbUrl>jdbc:oracle:thin:@crm.ssga.com:1521:basecrmtest</dbUrl>
+    <dbUser>aitest:Falcon549</dbUser>
     <maxPoolSize>15</maxPoolSize> 
     <region>897</region>
     <orgId>10000001</orgId>
-    <opId>91110011</opId>
-    <opPass>123456</opPass>
+    <opId>338656</opId>
+    <opPass>miscMasterFr3d</opPass>
   </Version>
 </config>
